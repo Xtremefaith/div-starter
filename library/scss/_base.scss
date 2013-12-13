@@ -1,0 +1,1101 @@
+/******************************************************************
+Site Name: Div Starter Theme
+Stylesheet: Base Mobile Stylesheet
+******************************************************************/
+
+/*********************
+GENERAL STYLES
+*********************/
+
+body {
+	background-color: $bgr; /* main background */
+	color: $base-color;         /* main text color */
+	font-family: $sans-serif;    /* main font */
+	font-size: 100%;
+	line-height: 1.5;
+}
+
+/* UNIVERSAL CLASSES */
+.underline{text-decoration:underline;}
+.italic{font-style:italic;}
+.bold{font-weight:bold;}
+.highlight{background: #FFFFA4;}
+.responsive{width:100%;height:auto;}
+.right{float: right;}
+.left{float: left;}
+
+img{
+	&.fit{
+		width:100%;
+	}
+	&.alignleft{
+		float: left;
+		margin-right: 10px;
+	}
+	&.alignright{
+		float: right;
+		margin-left: 10px;
+	}
+}
+hr {
+	border: 0;
+	height: 1px;
+	margin: 2.5em 0 0 0;
+	background-color: $accent;
+	clear: both;
+}
+
+#inner-content {
+	background-color: transparent;
+}
+
+#main {
+	min-height: 360px;
+	padding-bottom: 40px;	
+}
+
+article {
+	margin: 1em 2em 0 2em;
+}
+
+#feature {
+	height: 360px;
+	width: 100%;
+}
+#featured-stripe-container{
+	height: 380px;
+	overflow: hidden;
+	@media only screen and (min-width: 1140px) {
+		height: 637px;
+	}
+	#featured-stripe{
+		height: 100%;
+		width: 100%;
+		.stripe{
+			position: absolute;
+			z-index: -1;
+			width: 100%;
+			height: auto;
+		}
+	}
+}
+
+/********************
+WORDPRESS BODY CLASSES
+style a page via class
+********************/
+.blog, .archive, .single {
+	.article-header {
+		p {
+			margin-top: 0;
+		}
+	}	
+}
+
+.blog {							  /* blog template page */
+	h1.page-title {
+		margin: 1em 0 1em .7em;
+	}
+
+	.article-header {
+		h1.h2 {
+			margin: 0;
+			padding: 0;
+		}
+	}
+}                          
+
+.archive {						  /* archive page */
+	.article-header {
+		h3.h2 {
+			margin: 0;
+			padding: 0;
+		}
+	}	
+}
+
+.single {
+ 	.article-header {             /* single post page */
+		h1.entry-title {
+			margin-bottom: 0;
+			padding: 0;	
+		}
+ 	}
+}                        
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+
+.wrap {
+	width: 96%;
+	margin: 0 auto;
+}
+
+
+/******************************************************************
+H1, H2, H3, H4, H5 STYLES
+******************************************************************/
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+	font-family: $heavy;
+	text-rendering: optimizelegibility;
+	font-weight: 400;
+	/*
+	if you're going to use webfonts, be sure to check your weights
+	http://css-tricks.com/watch-your-font-weight/
+	*/
+
+	/* removing text decoration from all headline links */
+	a {
+		text-decoration: none;
+	}
+}
+
+h1, .h1 {
+	color: $accent;
+	font-family: $fancy;
+	font-size: 2.75em;
+	line-height: 1.333em;
+}
+
+h2, .h2 {
+	font-size: 1.75em;
+	line-height: 1.4em;
+	margin-bottom: 0.375em;
+}
+
+h3, .h3 {
+	font-size: 1.125em;
+	margin-bottom: 0; 
+}
+
+h4, .h4 {
+	font-size: 1.1em;
+	font-weight: 700;
+	margin-bottom: 0; 
+
+}
+
+h5, .h5 {
+	font-size: 0.846em;
+	line-height: 2.09em;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin-bottom: 0; 
+}
+
+h6, .h6 {
+	margin: -1em 0 2.33em;
+	text-transform: uppercase;
+}
+/*********************
+HEADER SYTLES
+*********************/
+
+.header {
+	
+}
+
+	#logo { margin: 40px 0 0;
+		a {
+			font: normal 1em/.7em $fancy;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+		}
+	}
+	
+	#desc {	
+		margin: 0 0 20px; 
+	}
+
+
+/*********************
+NAVIGATION STYLES
+*********************/
+
+/*
+all navs have a .nav class applied via
+the wp_menu function; this is so we can
+easily write one group of styles for
+the navs on the site so our css is cleaner
+and more scalable.
+*/
+
+.header {
+
+	#mobile-menu{
+		#inner-mobile-menu{
+			$height: 48px;
+			$width: 46px;
+			width: 100%;
+			min-width: 320px;
+			height: $height;
+			display: block;
+			background-color: $contrast;
+			#mobile-menu-header{
+				height: 100%;
+				overflow: hidden;
+				ul.icons{
+					margin: 0px;
+					height: 100%;
+					li{
+						float: left;
+						width: $width;
+						height: 100%;
+						display: block;
+						cursor: pointer;
+						list-style-type: none;
+						span{position:absolute;height:$height;width:$width;}
+						&:hover,&:active,&.open-close{
+							background-color: $contrast-dk;
+						}
+						&.menu-icon span{
+							background: url(../images/mobile-sprite.png) no-repeat 3px 5px;
+						}
+						&.mobile-logo {
+							width: 155px;
+							span{
+								background: url(../images/mobile-sprite.png) no-repeat -42px 5px;
+								width: 155px;
+							}
+							&:hover,&:active{
+								background-color: $contrast;
+							}
+						}
+						&.search-icon {
+							float: right;
+							span{
+								background: url(../images/mobile-sprite.png) no-repeat -187px 5px;
+							}
+						}
+					}
+				}
+			}
+			#mobile-menu-content{
+				float: left;
+				width: 100%;
+				#mobile-search-container{
+					background: $contrast-dk;
+					padding: 5px 0px;
+					overflow: hidden;
+					#mobile-search{
+						overflow: hidden;
+						form{
+							input{
+								border-radius: 3px;
+								border: none;
+								outline: none;
+							}
+							#mobile-search-input{
+								width: 75%;
+								min-width: 230px;
+								float: right;
+								input{
+									width: 100%;
+								}
+							}
+							#mobile-search-submit{
+								margin-left: 1.5%;
+								float: right;
+								text-align: right;
+								input[type=submit]{
+									background: $contrast;
+									padding: 10px;
+									text-transform:  uppercase;
+									color: $white;
+									font-size: 12px;
+								}
+							}
+						}
+					}
+				}
+				#mobile{
+					li{
+						a{
+							background-color: $contrast-dk;
+						}
+					}
+				}
+
+				#mobile{display:none;}
+				#mobile.open-close {display: block;}
+				#mobile-search-container{display:none;}
+				#mobile-search-container.open-close{display:block;}
+			}
+		}
+	}
+}
+
+.nav {
+	margin: 0;
+
+	li {
+		list-style-type: none;
+		a {
+			color: $white;
+			display: block;
+			font: normal .8em $serif;
+			letter-spacing: 1px;
+			padding: 15px 10px;
+			text-decoration: none;
+			text-transform: uppercase;
+		}
+
+		&:first-child {}
+
+		&:last-child {}
+
+		/*
+		so you really have to rethink your dropdowns for mobile.
+		you don't want to have it expand too much because the
+		screen is so small. How you manage your menu should
+		depend on the project. Here's some great info on it:
+		http://www.alistapart.com/articles/organizing-mobile/
+		*/
+		ul.sub-menu,
+		ul.children {
+			margin: 0px;
+			li {
+
+				a {
+					padding-left: 30px;
+				}
+			}
+		}
+	} /* end .menu li */
+} /* end .nav */
+
+/*********************
+POSTS & CONTENT STYLES
+*********************/
+#content {
+	margin-top: 2.2em;
+}
+
+/* post meta */
+.byline {
+	font-size: .85em;
+	color: #999;
+
+	time {}
+}
+
+/* entry content */
+.entry-content {
+
+	dd {
+		margin-left: 0;
+		font-size: 0.9em;
+		color: #787878;
+		margin-bottom: 1.5em;
+	}
+
+	img {
+		height: auto;
+		margin: 0 0 1.5em 0;
+		max-width: 100%;
+		padding: 5px;
+	}
+
+	video, object {
+		max-width: 100%;
+		height: auto;
+	}
+
+	pre {
+		background: #eee;
+		border: 1px solid #cecece;
+		padding: 10px;
+	}
+
+} /* end .entry-content */
+
+.wp-caption {
+	background: #eee;
+	padding: 5px;
+
+	/* images inside wp-caption */
+	img {
+		margin-bottom: 0;
+		width: 100%;
+	}
+
+	p.wp-caption-text {
+		font-size: 0.85em;
+		margin: 4px 0 7px;
+		text-align: center;
+	}
+
+} /* end .wp-caption */
+
+/******************************************************************
+PAGE NAVI STYLES
+******************************************************************/
+.page-navigation,
+.wp-prev-next {
+	margin: 1.1em 0 2.2em;
+}
+
+/******************************************************************
+COMMENT STYLES
+******************************************************************/
+.commentlist {
+
+	li {
+		position: relative;
+		clear: both;
+		overflow: hidden;
+		list-style-type: none;
+		margin-bottom: 1.5em;
+		padding: 0.7335em 10px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		ul.children {
+			margin: 0;
+
+			li {}
+
+			/* variations */
+			.comment {}
+			.alt {}
+			.odd {}
+			.even {}
+			.depth-1 {}           /* change number for different depth */
+			.byuser {}
+			.bypostauthor {}
+			.comment-author-admin {}
+
+		} /* end .commentlist li ul.children */
+	}
+
+	li[class*=depth-] {
+		margin-top: 1.1em;
+	}
+
+	li.depth-1 {
+		margin-left: 0;
+		margin-top: 0;
+	}
+
+	li:not(.depth-1) {
+		margin-right: -10px;
+		margin-left: -10px;
+		margin-top: 0;
+		padding-bottom: 0;
+	}
+
+	/* general comment classes */
+	.odd {
+		background: #eee;
+	}
+	.even {
+		background: #fefefe;
+	}
+
+	/* vcard */
+	.vcard {
+		margin-left: 50px;
+
+		cite.fn {
+			font-weight: 700;
+			font-style: normal;
+		}
+
+		time {
+			float: right;
+
+			a {
+				color: #999;
+				text-decoration: none;
+
+				&:hover {
+					text-decoration: underline;
+				}
+
+			}
+
+		}
+
+		img.avatar {
+			position: absolute;
+			left: 10px;
+			padding: 2px;
+			border: 1px solid #cecece;
+			background: #fff;
+		}
+
+	} /* end .commentlist .vcard */
+
+	/* comment content */
+	.comment_content {
+		margin-left: 50px;
+
+		p {
+			margin: 0.7335em 0 1.5em;
+			font-size: 1em;
+			line-height: 1.5em;
+		}
+
+	} /* end .commentlist .comment_content */
+
+	/* comment reply link */
+	.comment-reply-link {
+		text-decoration: none;
+		float: right;
+		background: #4598bb;
+		padding: 3px 5px;
+		color: #fff;
+		opacity: 0.65;
+		margin-bottom: 10px;
+		font-weight: 700;
+		font-size: 0.9em;
+
+		&:hover,
+		&:focus {
+			opacity: 1;
+		}
+
+	} /* end .commentlist .comment-reply-link */
+
+} /* end .commentlist */
+
+/******************************************************************
+COMMENT FORM STYLES
+******************************************************************/
+.respond-form {
+	margin: 1.5em 10px;
+	padding-bottom: 2.2em;
+
+	form {
+		margin: 0.75em 0;
+
+		li {
+			list-style-type: none;
+			clear: both;
+			margin-bottom: 0.7335em;
+
+			label,
+			small {
+				display: none;
+			}
+		}
+
+		input[type=text],
+		input[type=email],
+		input[type=url],
+		textarea {
+			padding: 3px 6px;
+			background: #efefef;
+			border: 2px solid #cecece;
+			line-height: 1.5em;
+
+			&:focus {
+				background: #fff;
+			}
+
+			/* form validation */
+			&:invalid {
+				outline: none;
+				border-color: #fbc2c4;
+				background-color: #f6e7eb;
+				-webkit-box-shadow: none;
+				   -moz-box-shadow: none;
+				    -ms-box-shadow: none;
+						box-shadow: none;
+			}
+		}
+
+		input[type=text],
+		input[type=email],
+		input[type=url] {
+			max-width: 400px;
+			min-width: 250px;
+		}
+
+		textarea {
+			resize: none;
+			width: 97.3%;
+			height: 150px;
+		}
+	}
+}
+
+	/* comment form title */
+	#comment-form-title {
+		margin: 0 0 1.1em;
+	}
+
+	/* allowed tags */
+	#allowed_tags {
+		margin: 1.5em 10px 0.7335em 0;
+	}
+
+	/* no comments */
+	.nocomments {
+		margin: 0 20px 1.1em;
+	}
+	
+/**************************
+FEATURES & CALLS TO ACTION
+**************************/	
+#top-feature {
+	background-color: $white;
+}
+
+#home-cta {
+	background-color: $white;
+	.widget {
+		margin: 2.2em 0 0;	
+	}
+}
+
+#home-features {
+	border-bottom: 1px solid $base-color;
+	padding: 0 0 30px 0;
+	
+	.widget {
+		float: left;
+		margin: 0;
+		
+		h4.widgettitle {
+			margin-top: 0;
+		}
+	}
+}
+
+#home-cta, #page-cta {
+	
+	font: 1.25em/1em normal $fancy;
+	text-align: center;
+}
+#home-cta h1,
+#page-cta h1,
+#home-cta h2,
+#page-cta h2 {
+	color: $text-color;
+	font: 1.25em/1em normal $fancy;
+	text-align: center;
+}
+
+#home-features .widget {
+	position: relative;
+	margin-left: 2.762430939%;
+	width: 22.928176794%;  
+}
+
+#home-features .widget:first-child {
+  margin-left: 0;
+}
+
+#home-features .widget:last-child {
+  float: right;
+}
+
+/*********************
+SLIDERS
+*********************/
+#home-slider {
+	//background-color: $white;
+	max-width: 100%;
+    height: auto;
+    margin: 15px 0 0 0;
+
+	img { /* slider image responsiveness in fixed width container */
+		max-width: 100%;
+		height: auto;
+    	border: 12px $white solid;
+ 		@include box-shadow(0, 0, 10px, 0, #444444, "");
+	}
+	.widget {
+		padding: 0;
+		margin: 0;
+	}
+	.wooslider {
+		margin: 0;
+		background: none;
+		border: none;
+		-webkit-border-radius: 0px;
+		-moz-border-radius: 0px;
+		-o-border-radius: 0px;
+		border-radius: 0px;
+		@include box-shadow(0, 0, 0, 0, #444444, "");
+		zoom: 1;
+
+		.slide-content {
+			margin: 0;
+		}
+
+		p {
+			margin: 0;
+		}
+	}
+	.slider-overlay {
+		position: absolute;
+		bottom: 2em;
+		right: 1.65em;
+		color: $white;
+	}
+}
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+.sidebar {
+	article{
+		margin: 0px;
+	}
+	.posts_listing{
+		.post-feature-image{
+			width: 100px;
+			height: 100px;
+			overflow: hidden;
+			float: left;
+			margin-right: 10px;
+			margin-bottom: 10px;
+			img{width: 100%;height: auto;}
+		}
+		section{
+			margin-left: 110px;
+			h1{
+				font-size: 1em;
+			}
+			p{
+				font-size: 0.75em;
+				font-family: Arial,Helvetica,sans-serif;
+			}
+		}
+	}
+}
+
+	.widgettitle {
+		margin-bottom: 0.75em;
+	}
+
+/*********************
+FOOTER STYLES
+*********************/
+.footer {
+	clear: both;
+	color: $white;
+}
+
+.copyright {
+	border-top: 1px solid $white;
+	font-size: .7em;
+	letter-spacing: .5px;
+	padding: 1em 2em 0;
+	text-align: right;
+	text-transform: uppercase;
+}
+
+/*********************
+POST NAV - SINGLE POSTS
+*********************/
+.post-nav {
+	margin:2em 0 2.5em 0;
+}
+
+#post-previous {
+	text-align: left;
+}
+
+#post-next {
+	text-align: right;
+}
+
+/************************
+SEARCH THIS SITE STYLES
+************************/
+#s {
+	width: 205px;
+	height: 36px;
+	font-size: 0.75em;
+	padding:0 0 0 .5em;
+}
+#searchsubmit {
+	margin-bottom: -15px;	
+}
+
+/*********************
+SELECTORS
+*********************/
+/* for those titles outside the article area */
+.title-margin {           
+	margin: 1em 0 1em .7em; /*align with content */ 
+}
+
+/**
+ * BxSlider v4.0 - Fully loaded, responsive content slider
+ * http://bxslider.com
+ *
+ * Written by: Steven Wanderski, 2012
+ * http://stevenwanderski.com
+ * (while drinking Belgian ales and listening to jazz)
+ *
+ * CEO and founder of bxCreative, LTD
+ * http://bxcreative.com
+ */
+
+
+/** RESET AND LAYOUT
+===================================*/
+
+.bx-wrapper {
+	position: relative;
+	margin: 0 auto 60px;
+	padding: 0;
+	*zoom: 1;
+	
+	#bxslider{
+		margin: 0px;
+	}
+
+	img {
+		max-width: 100%;
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	/** THEME
+	===================================*/
+	.bx-viewport {
+		left: -5px;
+	}
+
+	/* DIRECTION CONTROLS (NEXT / PREV) */
+	.bx-prev {
+		left: 10px;
+		background: url(../images/controls.png) no-repeat 0 -37px;
+		&:hover {
+			background-position: 0 0;
+		}
+	}
+
+	.bx-next {
+		right: 10px;
+		background: url(../images/controls.png) no-repeat -43px -37px;
+		&:hover {
+			background-position: -43px 0;
+		}
+	}
+}
+
+.bx-wrapper .bx-pager,
+.bx-wrapper .bx-controls-auto {
+	position: absolute;
+	top: 0px;
+	right: 30px;
+	width: 100%;
+}
+
+/* LOADER */
+.bx-wrapper .bx-loading {
+	min-height: 50px;
+	background: url(../images/bx_loader.gif) center center no-repeat #fff;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2000;
+}
+
+/* PAGER */
+.bx-wrapper .bx-pager {
+	right: 20px;
+	width: auto;
+	font-size: .85em;
+	font-family: Arial;
+	font-weight: bold;
+	color: #666;
+	padding-top: 10px;
+}
+
+.bx-wrapper .bx-pager .bx-pager-item,
+.bx-wrapper .bx-controls-auto .bx-controls-auto-item {
+	display: inline-block;
+	*zoom: 1;
+	*display: inline;
+}
+
+.bx-wrapper .bx-pager.bx-default-pager a {
+	background: $white;
+	text-indent: -9999px;
+	display: block;
+	width: 11px;
+	height: 11px;
+	margin: 0 3px;
+	outline: 0;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+
+.bx-wrapper .bx-pager.bx-default-pager a:hover,
+.bx-wrapper .bx-pager.bx-default-pager a.active {
+	background: $contrast;
+}
+
+.bx-wrapper .bx-controls-direction a {
+	position: absolute;
+	top: 40%;
+	outline: 0;
+	width: 32px;
+	height: 38px;
+	text-indent: -9999px;
+	z-index: 50;
+}
+
+.bx-wrapper .bx-controls-direction a.disabled {
+	display: none;
+}
+
+/* AUTO CONTROLS (START / STOP) */
+.bx-wrapper .bx-controls-auto {
+	text-align: center;
+}
+
+.bx-wrapper .bx-controls-auto .bx-start {
+	display: block;
+	text-indent: -9999px;
+	width: 10px;
+	height: 11px;
+	outline: 0;
+	background: url(../images/controls.png) -86px -11px no-repeat;
+	margin: 0 3px;
+}
+
+.bx-wrapper .bx-controls-auto .bx-start:hover,
+.bx-wrapper .bx-controls-auto .bx-start.active {
+	background-position: -86px 0;
+}
+
+.bx-wrapper .bx-controls-auto .bx-stop {
+	display: block;
+	text-indent: -9999px;
+	width: 9px;
+	height: 11px;
+	outline: 0;
+	background: url(../images/controls.png) -86px -44px no-repeat;
+	margin: 0 3px;
+}
+
+.bx-wrapper .bx-controls-auto .bx-stop:hover,
+.bx-wrapper .bx-controls-auto .bx-stop.active {
+	background-position: -86px -33px;
+}
+
+/* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
+
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
+	text-align: right;
+	width: 80%;
+}
+
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto {
+	right: 0;
+	width: 35px;
+}
+
+/* IMAGE CAPTIONS */
+
+.bx-wrapper .bx-caption {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: #666\9;
+	background: rgba(80, 80, 80, 0.75);
+	width: 100%;
+}
+
+.bx-wrapper .bx-caption span {
+	color: #fff;
+	font-family: Arial;
+	display: block;
+	font-size: .85em;
+	padding: 10px;
+}
+
+/* DOWNLOAD BUTTONS */
+
+/* Download Buttons + Comment Submit Button */
+.dwnld-button-shortcode {
+/* 	margin: 10px; */
+	border-radius: 5px;
+	border: 1px solid #808080;
+	padding: 2px;
+	-webkit-box-shadow: 0 0 3px 0 rgba(125,125,125,0.5), inset 0 0 0 2px #ccc;
+	-moz-box-shadow: 0 0 3px 0 rgba(125,125,125,0.5), inset 0 0 0 2px #ccc;
+	box-shadow: 0 0 3px 0 rgba(125,125,125,0.5), inset 0 0 0 2px #ddd;
+	display: inline-block;
+
+	&:hover{
+		-webkit-box-shadow: inset 0 0 0 2px #ddd;
+		-moz-box-shadow: inset 0 0 0 2px #ddd;
+		-ms-box-shadow: inset 0 0 0 2px #ddd;
+		box-shadow: inset 0 0 0 2px #ddd;
+	}
+	&:active{
+		border: 1px solid #b3b3b3;
+	}
+
+	a {
+		display: block;
+		padding: 0 0 0 50px;
+		background: #ddd;
+		@include css-gradient(#ececec,#ddd);
+		border-radius: 4px;
+	}
+
+	a, a:hover, a:active {
+		text-decoration:none;
+		color: #373737;
+		span em {
+			font-size: 14px;
+		}
+	}
+}
+
+.ie8, .lt-ie9{
+	.dwnld-button-shortcode{
+		a{
+			filter:none;
+		}
+	}
+}
+
+.dwnld-button-shortcode > a > span {
+	padding: 15px;
+	border-radius: 0 3px 3px 0;
+	display: block;
+	font-size: 18px;
+	line-height:100%;
+	background: #fff;
+	@include css-gradient(#fff,#f0f0f0);
+}
+
+.button-download {
+	width: 100%;
+	max-width: 280px;
+	position: relative;
+	display: block;
+	background: #ddd;
+	@include css-gradient(#ececec,#ddd);
+	
+	a { 
+		padding-left: 75px;
+		background:url(../img/button-download.png) 20px 45% no-repeat;
+
+		&.type-pdf {background:url(../images/media_icons/button-pdf.png) 18px 45% no-repeat;}
+		&.type-link {background:url(../images/media_icons/button-link.png) 20px 45% no-repeat;}
+		&.type-doc {background:url(../images/media_icons/button-doc.png) 20px 45% no-repeat;}
+		&.type-image {background:url(../images/media_icons/button-image.png) 20px 45% no-repeat;}
+		&.type-archive {background:url(../images/media_icons/button-archive.png) 20px 45% no-repeat;}
+		&.type-audio {background:url(../images/media_icons/button-audio.png) 20px 45% no-repeat;}
+		&.type-video {background:url(../images/media_icons/button-video.png) 20px 45% no-repeat;}
+	}
+}

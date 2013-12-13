@@ -1,0 +1,34 @@
+/******************************************************************
+Site Name: DIV STARTER
+Stylesheet: Main Stylesheet
+******************************************************************/
+
+@import "normalize"; /* import normalize */
+@import "mixins"; /* import mixins */
+@import "base"; /* styles in base.scss */
+
+@media only screen and (min-width: 481px) {
+	@import "481up"; /* styles in 481up.scss */
+} 
+@media only screen and (min-width: 768px) {
+	@import "grid"; /* import grids */
+	@import "768up"; /* styles in 768up.scss */
+}
+@media only screen and (min-width: 1030px) {
+	@import "1030up"; /* styles in 1030up.scss */
+}
+@media only screen and (min-width: 1240px) {
+	@import "1240up"; /* styles in 1240up.scss */
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min--moz-device-pixel-ratio: 1.5),
+       only screen and (min-device-pixel-ratio: 1.5) {
+	@import "2x"; /* styles in 2x.scss */
+}
+@media (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  // iPhone 5 or iPod Touch 5th generation styles (you can include your own file if you want)
+  
+}
+@media print {
+	@import "print"; 
+}

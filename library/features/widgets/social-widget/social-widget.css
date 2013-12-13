@@ -1,0 +1,140 @@
+/***** Sidebar, Sidebar-alt Social Icons Navigation ********************/
+#div-social {
+    overflow: hidden;
+}
+#div-social ul li {
+    list-style-type: none;
+}
+
+#div-social li a,
+#div-social li a:hover {
+      -moz-border-radius: 5px; /* Set border-radius */
+      -webkit-border-radius: 5px; /* Set border-radius */
+    border-radius: 5px; /* Set border-radius */
+    box-shadow: 1px 1px 2px #999;
+    display: block;
+    float: left;
+    height: 32px;
+    /*height: 40px; /* For circle icon - border-radius: 20px */
+    margin: 0 5px 5px 0;
+    padding: 0;
+    text-indent: -9999px;
+      -moz-transition: background-color 0.3s ease-in;
+      -webkit-transition: background-color 0.3s ease-in;
+    transition: background-color 0.3s ease-in;
+    width: 32px;
+    /*width: 40px; /* For circle icon - border-radius: 20px */
+}
+#div-social.white li a {
+    background: #444 url(images/social-sprite-white.png) no-repeat;
+}
+#div-social.dark li a {
+    background: #EEE url(images/social-sprite-dark.png) no-repeat;
+}
+
+#div-social li.email a {
+    /*background-color: #444;*/
+    background-position: -404px -4px;
+    /*background-position: -400px 0; /* For circle icon */
+}
+
+#div-social li.facebook a {
+   /*background-color: #444; */
+    background-position: -44px -4px;
+    /*background-position: -40px 0; /* For circle icon */
+}
+
+#div-social li.flicker a {
+    /*background-color: #444;*/
+    background-position: -284px -4px;
+    /*background-position: -280px 0; /* For circle icon */
+}
+
+#div-social li.goodreads a {
+    /*background-color: #444;*/
+    background-position: -484px -4px;
+    /*background-position: -480px 0; /* For circle icon */
+}
+
+#div-social li.google a {
+    /*background-color: #444;*/
+    background-position: -84px -4px;
+    /*background-position: -80px 0; /* For circle icon */
+}
+
+#div-social li.instagram a {
+    /*background-color: #444; */
+    background-position: -244px -4px;
+    /*background-position: -240px 0; /* For circle icon */
+}
+
+#div-social li.linkedin a {
+    /*background-color: #444;*/
+    background-position: -124px -4px;
+    /*background-position: -120px 0; /* For circle icon */
+}
+
+#div-social li.pinterest a {
+    /*background-color: #444; */
+    background-position: -164px -4px;
+    /*background-position: -160px 0; /* For circle icon */
+}
+
+#div-social li.rss a {
+    /*background-color: #444; */
+    background-position: -4px -4px;
+    /*background-position: 0px 0; /* For circle icon */
+}
+
+#div-social li.twitter a {
+    /*background-color: #444; */
+    background-position: -204px -4px;
+    /*background-position: -200px 0; /* For circle icon */
+}
+
+#div-social li.youtube a {
+    /*background-color: 444;*/
+    background-position: -323px -4px;
+    /*background-position: -320px 0; /* For circle icon */
+}
+
+#div-social li.div a {
+    /*background-color: #444;*/
+    background-position: -524px -4px;
+    /*background-position: -520px 0; /* For circle icon */
+}
+
+/*#div-social li.search a {
+    background-position: -444px -4px; for 32px
+    background-position: -440px 0; for 40px
+} This is just here for the position*/
+
+#div-social.white li.email a:hover,
+#div-social.white li.facebook a:hover,
+#div-social.white li.flicker a:hover,
+#div-social.white li.goodreads a:hover,
+#div-social.white li.google a:hover,
+#div-social.white li.twitter a:hover,
+#div-social.white li.instagram a:hover,
+#div-social.white li.linkedin a:hover,
+#div-social.white li.pinterest a:hover,
+#div-social.white li.rss a:hover,
+#div-social.white li.youtube a:hover,
+#div-social.white li.plus a:hover {
+    background-color: #777;
+}
+
+#div-social.dark li.email a:hover,
+#div-social.dark li.facebook a:hover,
+#div-social.dark li.flicker a:hover,
+#div-social.dark li.goodreads a:hover,
+#div-social.dark li.google a:hover,
+#div-social.dark li.twitter a:hover,
+#div-social.dark li.instagram a:hover,
+#div-social.dark li.linkedin a:hover,
+#div-social.dark li.pinterest a:hover,
+#div-social.dark li.rss a:hover,
+#div-social.dark li.youtube a:hover,
+#div-social.dark li.plus a:hover {
+    background-color: #CCC;
+}
