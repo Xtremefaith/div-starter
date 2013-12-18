@@ -1,94 +1,31 @@
-<?php get_header(); ?>
+<h1>Welcome to the Div Starter Beta</h1>
 
-			<div id="content">
-							
-				<div id="inner-content" class="wrap clearfix">
-			
-				    <div id="main" class="eightcol first clearfix" role="main">
-						
-						<?php $pagename = get_query_var('pagename'); ?>						
-						<h1 class="page-title title-margin" itemprop="headline"><?php echo $pagename; ?></h1>
+<h3>Description</h3>
 
-						<?php $counter = 0; ?>
-					    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>						
-						<?php $counter++; ?>
-					
-					    <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
-							<?php if ($counter > 1): ?>
-						    	<?php if (has_post_thumbnail()): ?>
-									<div class="entry-content"><?php the_post_thumbnail( 'blog' ); ?></div>
-								<?php endif; ?>
-							<?php endif; ?>
+<p>Div Starter is a parent theme created specifically for developers in order to make WordPress theme development more streamlined. It is equipped with a SASS mobile first approach to front-end development, and includes helpful resources like <a target="_blank" href="http://www.advancedcustomfields.com/">ACF</a> (Advance Custom Fields) for custom solution within the WordPress dashboard. Among that there are helpful classes included that make things like <a target="_blank" href="http://codex.wordpress.org/Post_Types">Custom Post Types</a> a breeze (these are often referred to as modules within the Div Starter approach)</p>
 
-						    <header class="article-header">
-					
-							    <h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
-								<p class="byline vcard"><?php
-									printf(__('<time class="updated" datetime="%1$s" pubdate>%2$s @ %3$s </time>', 'divtruth'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), get_the_time('g:iA'));
-									printf(__('<span class="tags">%1$s</span', 'divtruth'), get_the_category_list(', '));
-								?></p>
-						
-						    </header> <!-- end article header -->
-					
-						    <section class="entry-content clearfix">
-								<?php if ($counter > 1): ?>
-									<?php if (has_post_thumbnail()): ?>
-										<div class="pad-left-200"><?php the_excerpt(); ?></div>
-									<?php else : ?>
-										<?php the_excerpt(); ?>
-									<?php endif; ?>
-								<?php elseif ($counter == 1): ?>
-							    	<?php the_content(); ?>
-							    	<hr>
-								<?php endif; ?>
-						    </section> <!-- end article section -->
-						
-						    <footer class="article-footer">
-    							<p class="tags"><?php the_tags('<span class="tags-title">' . __('Tags:', 'bonestheme') . '</span> ', ', ', ''); ?></p>
+<h3>Getting Started</h3>
+<ol>
+	<li><strong>Activate Child Theme</strong>
+		<ul>
+			<li>If you have not already installed a Div Starter child theme then the first step is to pick a theme, install it in the themes directory and activate it</li>
+		</ul>
+	</li>
+	<li><strong>Brand the Child Theme</strong>
+		<ul>
+			<li>Edit the child theme style.css (name, description, etc)</li>
+			<li><strong>NOTE:</strong> Do not change the template from 'div-starter'</li>
+			<li>Edit the screenshot.png</li>
+			<li>Edit the <strong>Developer Tools Page</strong>
+				<em>(/wp-admin/admin.php?page=acf-options-developer-tools)</em>
+			</li>
+		</ul>	
+	</li>
+	<li><strong>Develop the Child Theme</strong></li>
+		<ul>
+			<li>Edit the template files in the child theme as needed and learn more from the <a target="_blank" href="http://starter.divtruth.com">Starter page documentation<a></li>
+		</ul>
+</ol>
 
-						    </footer> <!-- end article footer -->
-						    
-						    <?php // comments_template(); // uncomment if you want to use them ?>
-					
-					    </article> <!-- end article -->
-					
-					    <?php endwhile; ?>	
-					
-					        <?php if (function_exists('bones_page_navi')) { ?>
-					            <?php bones_page_navi(); ?>
-					        <?php } else { ?>
-					            <nav class="wp-prev-next">
-					                <ul class="clearfix">
-					        	        <li class="prev-link"><?php next_posts_link(__('&laquo; Older Entries', "bonestheme")) ?></li>
-					        	        <li class="next-link"><?php previous_posts_link(__('Newer Entries &raquo;', "bonestheme")) ?></li>
-					                </ul>
-					            </nav>
-					        <?php } ?>		
-					
-					    <?php else : ?>
-					    
-					        <article id="post-not-found" class="hentry clearfix">
-					            <header class="article-header">
-					        	    <h1><?php _e("Post Not Found", "bonestheme"); ?></h1>
-					        	</header>
-					            <section class="entry-content">
-					        	    <p><?php _e("Please visit our homepage.", "bonestheme"); ?></p>
- 									<ul>
-										<li><a href="/">Home</a></li>
-									</ul>
-					        	</section>
-					        	<footer class="article-footer">
-					        	</footer>
-					        </article>
-					
-					    <?php endif; ?>
-			
-				    </div> <!-- end #main -->
-    
-				    <?php get_sidebar(); ?>
-				    
-				</div> <!-- end #inner-content -->
-    
-			</div> <!-- end #content -->
-
-<?php get_footer(); ?>
+<h3>Need More Help?</h3>
+Refer to the <a href="http://starter.divtruth.com">Div Starter page<a> for questions about the framework. From there you will find a contact form as well for any additional questions. If you discover a bug or have a feature request please post on the <a target="_blank" href="https://github.com/Xtremefaith/div-starter/issues">github page</a>
