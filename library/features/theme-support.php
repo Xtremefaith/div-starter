@@ -52,9 +52,14 @@ function div_starter_main_nav() {
         'link_before' => '',                            // before each link
         'link_after' => '',                             // after each link
         'depth' => 0,                                   // limit the depth of the nav
+        'fallback_cb' => 'div_starter_main_nav_cb',                                   // limit the depth of the nav
 	));
 } /* end div_starter main nav */
-
+function div_starter_main_nav_cb(){
+    echo '<ul id="menu-main-menu-1" class="nav top-nav clearfix">';
+        wp_list_pages('sort_column=menu_order&title_li=');
+    echo '</ul>';
+}
 function div_starter_mobile_nav() {
     wp_nav_menu(array(
     	'container' => false,                           // remove nav container
@@ -67,6 +72,7 @@ function div_starter_mobile_nav() {
         'link_before' => '',                            // before each link
         'link_after' => '',                             // after each link
         'depth' => 0,                                   // limit the depth of the nav
+        'fallback_cb' => 'div_starter_main_nav_cb'
 	));
 } /* end div_starter mobile nav */
 

@@ -1,0 +1,73 @@
+/*
+Syntax error: Undefined mixin 'css-gradient'.
+        on line 32 of scss/shortcodes.scss, in `css-gradient'
+        from line 32 of scss/shortcodes.scss
+
+27: 
+28: 	a {
+29: 		display: block;
+30: 		padding: 0 0 0 50px;
+31: 		background: #ddd;
+32: 		@include css-gradient(#ececec,#ddd);
+33: 		border-radius: 4px;
+34: 	}
+35: 
+36: 	a, a:hover, a:active {
+37: 		text-decoration:none;
+
+Backtrace:
+scss/shortcodes.scss:32:in `css-gradient'
+scss/shortcodes.scss:32
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:253:in `visit_mixin'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:37:in `visit'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:100:in `visit'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:53:in `map'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:320:in `visit_rule'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:37:in `visit'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:100:in `visit'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:53:in `map'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:320:in `visit_rule'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:37:in `visit'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:100:in `visit'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:53:in `map'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:37:in `visit'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:100:in `visit'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:7:in `visit'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/tree/root_node.rb:20:in `render'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/engine.rb:315:in `_render'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/engine.rb:262:in `render'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/plugin/compiler.rb:362:in `update_stylesheet'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/plugin/compiler.rb:201:in `each'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/lib/sass/plugin/compiler.rb:283:in `block in watch'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/vendor/listen/lib/listen/multi_listener.rb:108:in `call'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/vendor/listen/lib/listen/multi_listener.rb:108:in `on_change'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/vendor/listen/lib/listen/multi_listener.rb:117:in `block in initialize_adapter'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/vendor/listen/lib/listen/adapters/polling.rb:56:in `call'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/vendor/listen/lib/listen/adapters/polling.rb:56:in `poll'
+c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.11/vendor/listen/lib/listen/adapters/polling.rb:32:in `block in start'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined mixin 'css-gradient'.\A         on line 32 of scss/shortcodes.scss, in `css-gradient'\A         from line 32 of scss/shortcodes.scss\A \A 27: \A 28: 	a {\A 29: 		display: block;\A 30: 		padding: 0 0 0 50px;\A 31: 		background: #ddd;\A 32: 		@include css-gradient(#ececec,#ddd);\A 33: 		border-radius: 4px;\A 34: 	}\A 35: \A 36: 	a, a:hover, a:active {\A 37: 		text-decoration:none;"; }

@@ -1,13 +1,11 @@
 /******************************************************************
-Site Name: Div Truth Starter
-Author: Nick Worth
+Site Name: Div Starter
 Stylesheet: Mixins & Constants Stylesheet
 ******************************************************************/
 
 /*********************
 CLEARFIXIN'
 *********************/
-
 // Contain floats: nicolasgallagher.com/micro-clearfix-hack/
 .clearfix {
   zoom: 1;
@@ -18,7 +16,6 @@ CLEARFIXIN'
 /*********************
 TOOLS
 *********************/
-
 // BORDER-BOX ALL THE THINGS! (http://paulirish.com/2012/box-sizing-border-box-ftw/)
 * {
 	-webkit-box-sizing: border-box;
@@ -76,81 +73,12 @@ $nav-hover-bgr:     $contrast-lt;
 $nav-current-bgr:   $neutral-lt;
 $nav-current-color: $link-hover;
 
-
-/*
-Here's a great tutorial on how to
-use color variables properly:
-http://sachagreif.com/sass-color-variables/
-*/
-
-
 /*********************
 TYPOGRAPHY
 *********************/
+$sans-serif:        Arial, sans-serif;
+$serif:             Times, serif;
 
-$sans-serif:        "OpenSansLight", "Helvetica Neue", Arial, sans-serif;
-$serif:             "Georgia", Cambria, "Times New Roman", Times, serif;
-$fancy: 			"Crushed", "OpenSansLightItalic", "Helvetica Neue", sans-serif;
-$heavy:				"OpenSansSemibold", "Helvetica Neue", Arial, sans-serif;
-
-
-/* 	To embed your own fonts, use this syntax
-	and place your fonts inside the
-	../fonts folder. For more information
-	on embedding fonts, go to:
-	http://www.fontsquirrel.com/
-	Be sure to remove the comment brackets.
-*/
-
-	@import url(http://fonts.googleapis.com/css?family=Crushed);
-
-	@font-face {
-	    font-family: 'OpenSansLight';
-	    src: url('../fonts/OpenSans-Light-webfont.eot');
-	    src: url('../fonts/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'),
-	         url('../fonts/OpenSans-Light-webfont.woff') format('woff'),
-	         url('../fonts/OpenSans-Light-webfont.ttf') format('truetype'),
-	         url('../fonts/OpenSans-Light-webfont.svg#OpenSansLight') format('svg');
-	    font-weight: normal;
-	    font-style: normal;
-	
-	}
-	
-	@font-face {
-	    font-family: 'OpenSansLightItalic';
-	    src: url('../fonts/OpenSans-LightItalic-webfont.eot');
-	    src: url('../fonts/OpenSans-LightItalic-webfont.eot?#iefix') format('embedded-opentype'),
-	         url('../fonts/OpenSans-LightItalic-webfont.woff') format('woff'),
-	         url('../fonts/OpenSans-LightItalic-webfont.ttf') format('truetype'),
-	         url('../fonts/OpenSans-LightItalic-webfont.svg#OpenSansItalic') format('svg');
-	    font-weight: normal;
-	    font-style: normal;
-	
-	}
-
-	@font-face {
-	    font-family: 'OpenSansSemibold';
-	    src: url('../fonts/OpenSans-Semibold-webfont.eot');
-	    src: url('../fonts/OpenSans-Semibold-webfont.eot?#iefix') format('embedded-opentype'),
-	         url('../fonts/OpenSans-Semibold-webfont.woff') format('woff'),
-	         url('../fonts/OpenSans-Semibold-webfont.ttf') format('truetype'),
-	         url('../fonts/OpenSans-Semibold-webfont.svg#OpenSansBold') format('svg');
-	    font-weight: normal;
-	    font-style: normal;
-	
-	}
-	
-	@font-face {
-	    font-family: 'OpenSansSemiboldItalic';
-	    src: url('../fonts/OpenSans-SemiboldItalic-webfont.eot');
-	    src: url('../fonts/OpenSans-SemiboldItalic-webfont.eot?#iefix') format('embedded-opentype'),
-	         url('../fonts/OpenSans-SemiboldItalic-webfont.woff') format('woff'),
-	         url('../fonts/OpenSans-SemiboldItalic-webfont.ttf') format('truetype'),
-	         url('../fonts/OpenSans-SemiboldItalic-webfont.svg#OpenSansBoldItalic') format('svg');
-	    font-weight: normal;
-	    font-style: normal;
-	
-	}
 
 /*
 use the best ampersand
@@ -161,11 +89,17 @@ span.amp {
   font-style: italic;
 }
 
-// text alignment
+/* UNIVERSAL CLASSES */
+.underline{text-decoration:underline;}
+.italic{font-style:italic;}
+.bold{font-weight:bold;}
 .text-left   { text-align: left; }
 .text-center { text-align: center; }
 .text-right  { text-align: right; }
-
+.highlight{background: #FFFFA4;}
+.responsive{width:100%;height:auto;}
+.right{float: right;}
+.left{float: left;}
 
 // alerts and notices
 %alert {

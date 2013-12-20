@@ -6,7 +6,7 @@
  * Author URI: http://ppfeufer.de
  * Version: 2.0-modified
  * Description: Add a shortcode to your wordpress for a nice downloadbutton.
- *             [dl url="" title="" desc="" type="" align=""]
+ *             [download url="" title="" desc="" type="" align=""]
  *            Graphics made by: <a href="http://kkoepke.de">Kai Köpke</a>. If you made your own graphic for this button, 
  *            feel free to write it in the comments under http://blog.ppfeufer.de/wordpress-button-fuer-downloads-erzeugen/.
  */
