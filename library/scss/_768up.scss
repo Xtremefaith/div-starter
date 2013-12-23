@@ -13,22 +13,13 @@ LAYOUT & GRID STYLES
 .tablet{display: block;}
 .mobile{display:none;}
 
-/*********************
-NAVIGATION STYLES
-*********************/
-.header {
-	#menu-icon-wrap {
-		display: none;
-	}
-	#menu-icon {
-		display: none;
-	}
-	nav {
-		&#mobile.open-close {display: none!important;}
+nav{
+	ul{
+		li{
+			list-style-type: none;
+		}
 	}
 }
-
-@import '768up-nav';
 
 .utility-nav {
 	display:block;
