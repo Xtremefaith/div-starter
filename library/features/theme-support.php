@@ -40,55 +40,58 @@ register_nav_menus(
 	)
 );
 
-function div_starter_main_nav() {
-    wp_nav_menu(array(
-    	'container' => false,                           // remove nav container
-    	'container_class' => 'menu clearfix',           // class of container (should you choose to use it)
-    	'menu' => __( 'Main Navigation', 'div_starter' ),  // nav name
-    	'menu_class' => 'nav top-nav clearfix',         // adding custom nav class
-    	'theme_location' => 'main-nav',                 // where it's located in the theme
-    	'before' => '',                                 // before the menu
-        'after' => '',                                  // after the menu
-        'link_before' => '',                            // before each link
-        'link_after' => '',                             // after each link
-        'depth' => 0,                                   // limit the depth of the nav
-        'fallback_cb' => 'div_starter_main_nav_cb',                                   // limit the depth of the nav
-	));
+function div_starter_main_nav($newOptions = array()) {
+    $options = array(
+        'container' => false,                               // remove nav container
+        'container_class' => 'menu clearfix',               // class of container (should you choose to use it)
+        'menu' => __( 'Main Navigation', 'div_starter' ),   // nav name
+        'menu_class' => 'nav top-nav clearfix',             // adding custom nav class
+        'theme_location' => 'main-nav',                     // where it's located in the theme
+        'before' => '',                                     // before the menu
+        'after' => '',                                      // after the menu
+        'link_before' => '',                                // before each link
+        'link_after' => '',                                 // after each link
+        'depth' => 0,                                       // limit the depth of the nav
+        'fallback_cb' => 'div_starter_main_nav_cb',         // Callback function if no menu found
+    );
+    wp_nav_menu(array_merge($options, $newOptions));
 } /* end div_starter main nav */
 function div_starter_main_nav_cb(){
     echo '<ul id="menu-main-menu-1" class="nav top-nav clearfix">';
         wp_list_pages('sort_column=menu_order&title_li=');
     echo '</ul>';
 }
-function div_starter_mobile_nav() {
-    wp_nav_menu(array(
-    	'container' => false,                           // remove nav container
-    	'container_class' => 'menu clearfix',           // class of container (should you choose to use it)
-    	'menu' => __( 'Mobile Navigation', 'div_starter' ),  // nav name
-    	'menu_class' => 'nav top-nav clearfix',         // adding custom nav class
-    	'theme_location' => 'mobile-nav',                 // where it's located in the theme
-    	'before' => '',                                 // before the menu
-        'after' => '',                                  // after the menu
-        'link_before' => '',                            // before each link
-        'link_after' => '',                             // after each link
-        'depth' => 0,                                   // limit the depth of the nav
+function div_starter_mobile_nav($newOptions = array()) {
+    $options = array(
+        'container' => false,                               // remove nav container
+        'container_class' => 'menu clearfix',               // class of container (should you choose to use it)
+        'menu' => __( 'Mobile Navigation', 'div_starter' ), // nav name
+        'menu_class' => 'nav top-nav clearfix',             // adding custom nav class
+        'theme_location' => 'mobile-nav',                   // where it's located in the theme
+        'before' => '',                                     // before the menu
+        'after' => '',                                      // after the menu
+        'link_before' => '',                                // before each link
+        'link_after' => '',                                 // after each link
+        'depth' => 0,                                       // limit the depth of the nav
         'fallback_cb' => 'div_starter_main_nav_cb'
-	));
+    );
+    wp_nav_menu(array_merge($options, $newOptions));
 } /* end div_starter mobile nav */
 
-function div_starter_utility_nav() {
-    wp_nav_menu(array(
-    	'container' => false,                           // remove nav container
-    	'container_class' => 'menu clearfix',           // class of container (should you choose to use it)
-    	'menu' => __( 'Utility Nav', 'div_starter' ),  // nav name
-    	'menu_class' => 'utility-nav clearfix',         // adding custom nav class
-    	'theme_location' => 'utility-nav',                 // where it's located in the theme
-    	'before' => '',                                 // before the menu
+function div_starter_utility_nav($newOptions = array()) {
+    $options = array(
+        'container' => false,                           // remove nav container
+        'container_class' => 'menu clearfix',           // class of container (should you choose to use it)
+        'menu' => __( 'Utility Nav', 'div_starter' ),   // nav name
+        'menu_class' => 'utility-nav clearfix',         // adding custom nav class
+        'theme_location' => 'utility-nav',              // where it's located in the theme
+        'before' => '',                                 // before the menu
         'after' => '',                                  // after the menu
         'link_before' => '',                            // before each link
         'link_after' => '',                             // after each link
         'depth' => 0,                                   // limit the depth of the nav
-	));
+    );
+    wp_nav_menu(array_merge($options, $newOptions));
 } /* end div_starter utility nav */
 
 ?>

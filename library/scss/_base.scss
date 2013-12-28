@@ -65,7 +65,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 /*********************
 HEADER SYTLES
 *********************/
-#logo { margin: 40px 0 0;
+#logo {
 	a {
 		font: normal 1em/.7em $serif;
 		letter-spacing: 2px;
@@ -76,7 +76,6 @@ HEADER SYTLES
 #desc {	
 	margin: 0 0 20px; 
 }
-
 
 /*********************
 NAVIGATION STYLES
@@ -195,7 +194,6 @@ NAVIGATION STYLES
 			display: block;
 			font: normal .8em $serif;
 			letter-spacing: 1px;
-			padding: 15px 10px;
 			text-decoration: none;
 		}
 		ul.sub-menu,
