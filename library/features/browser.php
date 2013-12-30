@@ -5,6 +5,7 @@ Developer URI:  http://www.DivTruth.com
 Description:    The browser and device agent that is used is based as a class within the body tag for easy CSS adjustments
 */
 function mv_browser_body_class($classes) {
+    // echo '<h1>'.$_SERVER['HTTP_USER_AGENT'].'<h1>'; #for testing purposes
     global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari,$is_chrome, $is_iphone;
     if($is_lynx) $classes[] = 'lynx';
     elseif($is_gecko) $classes[] = 'gecko';
@@ -14,7 +15,9 @@ function mv_browser_body_class($classes) {
     elseif($is_chrome) $classes[] = 'chrome';
     elseif($is_IE) {
         if(preg_match('/MSIE ([0-9]+)([a-zA-Z0-9.]+)/',$_SERVER['HTTP_USER_AGENT'], $browser_version))
-        $classes[] = 'ie'.$browser_version[1];
+            $classes[] = 'ie ie'.$browser_version[1];
+        if (strpos($_SERVER['HTTP_USER_AGENT'], 'Trident/7.0; rv:11.0') !== false)
+            $classes[] = 'ie ie11';
     } else $classes[] = 'unknown';
     if($is_iphone) $classes[] = 'iphone';
     if ( stristr( $_SERVER['HTTP_USER_AGENT'],"mac") ) {
