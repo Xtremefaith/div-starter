@@ -97,6 +97,26 @@ class Content{
     }
     return $image_array;
   }
+  
+  /**
+   * GET CONTENT IMAGE
+   * 
+   * @author Nick Worth
+   * @since 1.0
+   * @param <number> $postid
+   * @param <string> $size
+   * @return <array> $post_types
+   */
+  public static function get_attachment_image($postid=0, $size='thumbnail') {    
+    global $post, $posts;
+    $first_img = '';
+    ob_start();
+    ob_end_clean();
+    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+    $first_img = $matches[1][0];
+
+    return $first_img;
+  }
 
   /**
    * SET EXCERPT LENGTH
