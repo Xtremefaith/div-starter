@@ -595,4 +595,71 @@ if(function_exists("register_field_group")){
                 'menu_order' => 1,
         ));
 }
+
+/**************************
+ * Included JS scripts
+ **************************/
+if(function_exists("register_field_group")){
+        register_field_group(array (
+                'id' => 'acf_include-bxslider',
+                'title' => 'Include BXSlider',
+                'fields' => array (
+                            array (
+                            'key' => 'field_g1a89g1w3g84s',
+                            'label' => 'Include Include BXSlider',
+                            'name' => 'include_bxslider',
+                            'type' => 'true_false',
+                            'instructions' => 'Do you want to include <a href="http://bxslider.com/" target="_blank">BXSlider</a>',
+                            'required' => 0,
+                            'message' => '',
+                            'default_value' => 0,
+                        ),
+                        array (
+                                'key' => 'field_w91sdf5219q1b',
+                                'label' => 'Header/Footer',
+                                'name' => 'load_bxslider',
+                                'type' => 'radio',
+                                'instructions' => 'Load script in header or footer?',
+                                'conditional_logic' => array (
+                                    'status' => 1,
+                                    'rules' => array (
+                                        array (
+                                            'field' => 'field_g1a89g1w3g84s',
+                                            'operator' => '==',
+                                            'value' => '1',
+                                        ),
+                                    ),
+                                    'allorany' => 'all',
+                                ),
+                                'required' => 1,
+                                'choices' => array (
+                                        'Footer' => 'Footer',
+                                        'Header' => 'Header',
+                                ),
+                                'other_choice' => 0,
+                                'save_other_choice' => 0,
+                                'default_value' => 'Footer',
+                                'layout' => 'horizontal',
+                        ),
+                ),
+                'location' => array (
+                        array (
+                                array (
+                                        'param' => 'options_page',
+                                        'operator' => '==',
+                                        'value' => 'acf-options-developer-tools',
+                                        'order_no' => 0,
+                                        'group_no' => 0,
+                                ),
+                        ),
+                ),
+                'options' => array (
+                        'position' => 'side',
+                        'layout' => 'default',
+                        'hide_on_screen' => array (
+                        ),
+                ),
+                'menu_order' => 1,
+        ));
+}
 ?>
