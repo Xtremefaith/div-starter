@@ -126,7 +126,7 @@ function div_after_init_filters(){
   }
   function include_bxslider(){
     $in_footer = (get_field('load_bxslider','option') == "Header") ? false : true;
-    wp_enqueue_script( 'bxslider-js', THEME_LIBRARY_URL.'/js/libs/jquery.bxslider.js', array('jquery'), false, $in_footer);
+    wp_enqueue_script( 'bxslider-js', DIV_LIBRARY_URL.'/js/libs/jquery.bxslider.js', array('jquery'), false, $in_footer);
   }
 
 } /* END INIT FILTERS */
