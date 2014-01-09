@@ -116,6 +116,19 @@ function div_after_init_filters(){
     <?php 
   }
 
+  /**
+   * INCLUDE SCRIPTS FOR ENQUE
+   * 
+   * @since 1.0
+   */
+  if(get_field('include_bxslider','option')){
+      add_filter('wp_enqueue_scripts','include_bxslider');
+  }
+  function include_bxslider(){
+    $in_footer = (get_field('load_bxslider','option') == "Header") ? false : true;
+    wp_enqueue_script( 'bxslider-js', THEME_LIBRARY_URL.'/js/libs/jquery.bxslider.js', array('jquery'), false, $in_footer);
+  }
+
 } /* END INIT FILTERS */
   
 
