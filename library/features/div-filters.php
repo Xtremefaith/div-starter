@@ -270,4 +270,20 @@ function div_display_image_size_names_muploader( $sizes ) {
   return $new_sizes;
 }
 add_filter('image_size_names_choose', 'div_display_image_size_names_muploader', 11, 1);
+
+/**
+ * REMOVE SEARCH FILTERS
+ * search filters can break wordpress functionality, this will prevent that
+ * @link: http://wordpress.org/support/topic/36-upgrade-searchformphp-not-working#post-4559505
+ * 
+ * @author: Nick Worth
+ * @since: 1.1
+ */
+function search_form_no_filters() {
+  $search_form_template = locate_template( 'searchform.php' );
+  if ( '' !== $search_form_template ) {
+    remove_all_filters('get_search_form');
+  }
+}
+add_action('pre_get_search_form', 'search_form_no_filters');
 ?>
