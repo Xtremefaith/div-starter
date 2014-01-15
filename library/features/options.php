@@ -46,9 +46,8 @@ function div_option_page_menus() {
   add_submenu_page('admin.php?page=acf-options-theme-settings', __('Developer Tools','theme-main'), __('Developer Tools','theme-main'), 'manage_options', 'admin.php?page=acf-options-developer-tools');
   add_submenu_page('admin.php?page=acf-options-theme-settings', __('Documentation','theme-main'), __('Documentation','theme-main'), 'manage_options', 'documentation', 'div_active_pages');
   add_submenu_page('admin.php?page=acf-options-theme-settings', __('Company Settings','theme-main'), __('Company Settings','theme-main'), 'manage_options', 'admin.php?page=acf-options-company-settings');
-  if(file_exists(THEME_FEATURES_DIR.'/modules.php')){
-    add_submenu_page('admin.php?page=acf-options-company-settings', __('Modules','theme-main'), __('Modules','theme-main'), 'manage_options', 'admin.php?page=acf-options-modules-settings');
-  }
+  if(file_exists(THEME_LIBRARY_DIR.'/modules'))
+    add_submenu_page('admin.php?page=acf-options-theme-settings', __('Modules','theme-main'), __('Modules','theme-main'), 'manage_options', 'admin.php?page=acf-options-modules-settings');
 }
 function div_active_pages(){
   include(DIV_FEATURES_DIR.'/documentation.php');           #FEATURE: Documentation
