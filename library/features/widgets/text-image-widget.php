@@ -102,9 +102,7 @@ class div_text_image_widget extends WP_Widget {
 
       <p>
         <label for="<?php echo $this->get_field_id('text'); ?>"><?php _e('<strong>Text:</strong>'); ?></label> 
-        <textarea class="widefat" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>" rows="5">
-          <?php echo esc_attr($text); ?>
-        </textarea>
+        <textarea class="widefat" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>" rows="5"><?php echo esc_attr($text); ?></textarea>
       </p>
       
     <?php } 
