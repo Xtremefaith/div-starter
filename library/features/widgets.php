@@ -10,3 +10,4 @@ include(DIV_FEATURES_DIR.'/widgets/content-widget/content-widget.php');
 include(DIV_FEATURES_DIR.'/widgets/social-widget/social-widget.php');
 include(DIV_FEATURES_DIR.'/widgets/contact-block.php');
 include(DIV_FEATURES_DIR.'/widgets/banner-ad.php');
+include(DIV_FEATURES_DIR.'/widgets/text-image-widget.php');
