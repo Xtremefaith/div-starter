@@ -35,7 +35,7 @@ _e('<div class="wrap no_move">
         $exploded = explode('.', $file);
         $ext = end($exploded);
         $name = substr_replace(str_replace("_"," ",$file), "", -4);
-        if($ext == "swf"){
+        if($ext == "swf" || $ext =="mp4"){
           echo '<li class="video"><a class="button thickbox" target="_blank" href="'.THEME_LIBRARY_URL.'/tutorial_videos/'.$file.'?TB_iframe=true&width=1100&height=800">'.$name.'</a></li>';
         }
       }
