@@ -272,7 +272,7 @@ class Custom
         '/s$/i' => '',
         );
 
-        $uncountable = array('equipment', 'information', 'rice', 'money', 'species', 'series', 'fish', 'sheep');
+        $uncountable = array('equipment', 'information', 'rice', 'money', 'species', 'series', 'fish', 'sheep', "press");
 
         $irregular = array(
         'person' => 'people',
