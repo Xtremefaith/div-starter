@@ -305,6 +305,17 @@ nav ol {
     list-style-image: none;
 }
 
+/*
+ * Removing UL padding/margin in headers and navigation
+ */
+header, 
+nav{
+    ul{
+        margin: 0px;
+        padding: 0px;
+    }
+}
+
 /* ==========================================================================
    Embedded content
    ========================================================================== */
@@ -508,9 +519,9 @@ the normalize styles, make sure to edit from this point up.
 
 // proper formatting (http://blog.fontdeck.com/post/9037028497/hyphens) 
 p {
-	-webkit-hyphens: auto;
-	-epub-hyphens:   auto;
-	-moz-hyphens:    auto;
+    -webkit-hyphens: auto;
+    -epub-hyphens:   auto;
+    -moz-hyphens:    auto;
   hyphens:         auto;
 }
 
@@ -521,9 +532,9 @@ dfn, em, .em { font-style: italic; }
 small, .small { font-size: 75%; }
 
 dd {
-	margin: 0;
+    margin: 0;
 }
 
 .commentlist {
-	list-style: none;
+    list-style: none;
 }
