@@ -4,145 +4,49 @@ Stylesheet: Mixins & Constants Stylesheet
 ******************************************************************/
 
 /*********************
-CLEARFIXIN'
-*********************/
-// Contain floats: nicolasgallagher.com/micro-clearfix-hack/
-.clearfix {
-  zoom: 1;
-	&:before, &:after { content: ""; display: table; }
-	&:after { clear: both; }
-}
-
-/*********************
-TOOLS
-*********************/
-// BORDER-BOX ALL THE THINGS! (http://paulirish.com/2012/box-sizing-border-box-ftw/)
-* {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing:    border-box;
-	box-sizing:         border-box;
-}
-
-// http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
-.image-replacement {
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
-}
-
-
-/*********************
 COLORS
-Need help w/ choosing your colors? Try this site out:
-http://0to255.com/
 *********************/
-
+$white: 			#fff;
+$black:				#000;
 $alert-yellow:      #ebe16f;
 $alert-red:         #fbe3e4;
 $alert-green:       #e6efc2;
 $alert-blue:        #d5edf8;
 
-$black:             #000;
-$white:             #fff;
-
-$admin-blue:		#0074a2;
-$admin-grey:		#333333;
-/* Color Palette */
-
-$base-color:		#333333;				
-$base-lt:			lighten($base-color, 10%);
-$base-lt:			darken($base-color, 10%);
-$base-dk:			#ba161d;				
-$accent:			#1D1D1D;				
-$accent-lt:			#777777;				
-$accent-dk:			$black;					
-$contrast:			#B82E00;				
-$contrast-lt:		lighten($contrast, 10%);
-$contrast-dk:		darken($contrast, 10%);	
-$neutral:			#FFDB70;				
-$neutral-lt:		lighten($neutral, 10%);
-$neutral-med:		darken($neutral, 5%);
-$neutral-dk:		darken($neutral, 10%);
-
-$bgr:				$white;					 
-$link-color:        $contrast;
-$link-hover:        darken($link-color, 9%);
-$text-color:		$accent;
-$nav-bgr:           $contrast;
-$nav-hover-bgr:     $contrast-lt;
-$nav-current-bgr:   $neutral-lt;
-$nav-current-color: $link-hover;
-
 /*********************
-TYPOGRAPHY
+RESPOND TO
+@include respondTo($media);
+NOTES:
+	- $media ($smartphone, $tabletPortrait, $tabletLandscape, $desktop, $largeScreen)
 *********************/
-$sans-serif:        Arial, sans-serif;
-$serif:             Times, serif;
-
-
-/*
-use the best ampersand
-http://simplebits.com/notebook/2008/08/14/ampersands-2/
-*/
-span.amp {
-  font-family: Baskerville,'Goudy Old Style',Palatino,'Book Antiqua',serif !important;
-  font-style: italic;
-}
-
-/* UNIVERSAL CLASSES */
-.underline{text-decoration:underline;}
-.italic{font-style:italic;}
-.bold{font-weight:bold;}
-.text-left   { text-align: left; }
-.text-center { text-align: center; }
-.text-right  { text-align: right; }
-.highlight{background: #FFFFA4;}
-.responsive{width:100%;height:auto;}
-.right{float: right;}
-.left{float: left;}
-
-// alerts and notices
-%alert {
-	margin: 10px;
-	padding: 5px 18px;
-	border: 1px solid;
-}
-
-.alert-help {
-	@extend %alert;
-	border-color: darken($alert-yellow, 5%);
-	background: $alert-yellow;
-}
-
-.alert-info {
-	@extend %alert;
-	border-color: darken($alert-blue, 5%);
-	background: $alert-blue;
-}
-
-.alert-error {
-	@extend %alert;
-	border-color: darken($alert-red, 5%);
-	background: $alert-red;
-}
-
-.alert-success {
-	@extend %alert;
-	border-color: darken($alert-green, 5%);
-	background: $alert-green;
+$smartphone: 480px;
+$tabletPortrait: 767px;
+$tabletLandscape: 1024px;
+$desktop: 1174px;
+$largeScreen: 1400px;
+@mixin respondTo($media) {
+  @if $media == smartphone {
+    @media (max-width: $smartphone) { @content; }
+  }
+  @else if $media == tablet {
+    @media (min-width: $tabletPortrait) and (max-width: $tabletLandscape) { @content; }
+  }
+  @else if $media == smallScreen {
+    @media (max-width: $desktop) { @content; }
+  }
+  @else if $media == desktop {
+    @media (min-width: $desktop) { @content; }
+  }
 }
 
 /*********************
 TRANISTION
+@include transition(all 0.2s ease-in-out);
+NOTES:
+	- Rewritten to be cleaner and easier to use, but you will
+	 need to be using Sass 3.2+ for these to work.
+	- Thanks to @anthonyshort for the inspiration on these.
 *********************/
-
-/*
-I totally rewrote this to be cleaner and easier to use.
-You'll need to be using Sass 3.2+ for these to work.
-Thanks to @anthonyshort for the inspiration on these.
-USAGE: @include transition(all 0.2s ease-in-out);
-*/
-
 @mixin transition($transition...) {
 	// defining prefixes so we can use them in mixins below
 	$prefixes:      ("-webkit", "-ms", "-o",  "");
@@ -155,12 +59,11 @@ USAGE: @include transition(all 0.2s ease-in-out);
 
 /*********************
 CSS3 GRADIENTS
-Be careful with these since they can
-really slow down your CSS. Don't overdue it.
+@include css-gradient(#dfdfdf,#f8f8f8);
+NOTES:
+	-Be careful with these since they can really slow down your CSS. Don't overdue it.
+	-added support for IE
 *********************/
-
-/* @include css-gradient(#dfdfdf,#f8f8f8); */
-/* added support for IE */
 @mixin css-gradient($from, $to) {
 	background-color: $to;
 	background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
@@ -173,10 +76,8 @@ really slow down your CSS. Don't overdue it.
 
 /*********************
 CSS3 BOX SHADOW
+@include box-shadow(0, 0, 10px, 0, #444444, "");
 *********************/
-
-/* Use include box-shadow(0, 0, 10px, 0, #444444, ""); */
-
 @mixin box-shadow($top, $left, $blur, $spread, $color, $inset:"") {
       -webkit-box-shadow:$top $left $blur $spread #{$inset};
       -moz-box-shadow:$top $left $blur $spread #{$inset};
@@ -186,14 +87,101 @@ CSS3 BOX SHADOW
 
 /*********************
 BOX SIZING
+@include box-sizing(border-box);
+NOTE: 
+	- Value of "padding-box" is only supported in Gecko. So probably best not to use it.
 *********************/
-
-/* @include box-sizing(border-box); */
-/* NOTE: value of "padding-box" is only supported in Gecko. So
-probably best not to use it. I mean, were you going to anyway? */
 @mixin box-sizing($type: border-box) {
 	-webkit-box-sizing: $type;
 	-moz-box-sizing:    $type;
 	-ms-box-sizing:     $type;
 	box-sizing:         $type;
+}
+
+/*********************
+TRIANGLE
+@include triangle($direction, $size: 6px, $color: #222)
+NOTES:
+	- $direction: up, down, left, right
+	- Within a pseudo element and add positioning properties (ie. top, left)
+*********************/
+@mixin triangle($direction, $size: 6px, $color: #222){
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0; width: 0;
+  @if ($direction == 'up'){
+    border-bottom: $size solid $color;
+    border-left: 1/2*$size solid transparent;
+    border-right: 1/2*$size solid transparent;
+  }
+  @else if ($direction == 'down'){
+    border-top: $size solid $color;
+    border-left: 1/2*$size solid transparent;
+    border-right: 1/2*$size solid transparent;
+  }
+  @else if ($direction == 'left'){
+    border-top: 1/2*$size solid transparent;
+    border-bottom: 1/2*$size solid transparent;
+    border-right: $size solid $color;
+  }
+  @else if ($direction == 'right'){
+    border-top: 1/2*$size solid transparent;
+    border-bottom: 1/2*$size solid transparent;
+    border-left: $size solid $color;
+  }
+}
+
+/*********************
+CURRENCY
+	<PARENT class="USD">    
+	    <span class="price">45</span>
+	</PARENT>
+
+	.price {
+	    @extend %currency;
+	}
+*********************/
+%currency {
+  position: relative;
+  &:before {
+    content: '$';
+    position: relative;
+    left: 0;
+  }
+}
+.USD %currency:before { content: '$'; }
+.EUR %currency:before { content: '\20AC'; } // must escape the html entities for each currency symbol
+.ILS %currency:before { content: '\20AA'; }
+.GBP %currency:before { content: '\00A3'; }
+
+/*********************
+VERTICAL ALIGN (GHOST)
+@include verticalAlign()
+NOTES:
+	- This is a slightly modified version of a CSS-Tricks method
+	 for vertically centering elements with a dynamic size. 
+	 Works beautifully and doesn’t require an extra, non-semantic HTML element.
+*********************/
+@mixin verticalAlign(){
+  &:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%; width: .1px;
+  }
+}
+
+/*********************
+TRUNCATE TEXT
+@include truncateText()
+NOTES:
+	- This is a slightly modified version of a CSS-Tricks method
+	 for vertically centering elements with a dynamic size. 
+	 Works beautifully and doesn’t require an extra, non-semantic HTML element.
+*********************/
+@mixin truncateText($overflow: ellipsis){
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: $overflow; // values are: clip, ellipsis, or a string
 }

@@ -3,18 +3,8 @@ Site Name: DIV STARTER
 Stylesheet: Main Stylesheet
 ******************************************************************/
 
-@import "normalize"; /* import normalize */
-@import "mixins"; /* import mixins */
-@import "shortcodes"; /* styles in shortcode.scss */
-@import "font-awesome"; /* styles in font-awesome.scss */
-@import "bxslider"; /* styles in base.scss */
-
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-       only screen and (min--moz-device-pixel-ratio: 1.5),
-       only screen and (min-device-pixel-ratio: 1.5) {
-	@import "2x"; /* styles in 2x.scss */
-}
-@media (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
-  // iPhone 5 or iPod Touch 5th generation styles (you can include your own file if you want)
-  
-}
+@import "normalize"; 		/* import normalize - reset styles */
+@import "mixins"; 			/* import mixins */
+@import "classes"; 			/* import universal classes */
+@import "shortcodes"; 		/* import custom styles for built-in shortcodes */
+@import "font-awesome"; 	/* styles in font-awesome.scss */
