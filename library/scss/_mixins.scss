@@ -14,6 +14,16 @@ $alert-green:       #e6efc2;
 $alert-blue:        #d5edf8;
 
 /*********************
+ * RESPONSIVE IMAGES
+ * @include responsive();
+ *********************/
+@mixin responsive() {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+}
+
+/*********************
 RESPOND TO
 @include respondTo($media);
 NOTES:
@@ -40,7 +50,21 @@ $largeScreen: 1400px;
 }
 
 /*********************
-TRANISTION
+BORDER RADIUS
+@include border-radius($radius);
+NOTES:
+	- Simple border radius mixin to cover all browser implementations
+*********************/
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+       -o-border-radius: $radius;
+          border-radius: $radius;
+}
+
+/*********************
+TRANSITION
 @include transition(all 0.2s ease-in-out);
 NOTES:
 	- Rewritten to be cleaner and easier to use, but you will
@@ -185,3 +209,25 @@ NOTES:
   white-space: nowrap;
   text-overflow: $overflow; // values are: clip, ellipsis, or a string
 }
+
+/*********************
+ANIMATION
+@include animation()
+NOTES:
+	- Compass CSS3 mixins don’t yet handle vendor prefixes for CSS animations, 
+	so this is a very simple mixin to simulate that functionality.
+*********************/
+@mixin animation($name, $duration: 1000ms, $iterations: infinite, $timing-function: ease, $delay: 0ms) {
+  // There is a FF bug that requires all time values to have units, even 0 !!!!!!
+  -webkit-animation: $name $duration $iterations $timing-function $delay;
+  -moz-animation: $name $duration $iterations $timing-function $delay;
+  -o-animation: $name $duration $iterations $timing-function $delay;
+  animation: $name $duration $iterations $timing-function $delay;
+}
+
+/*********************
+ALERTED
+@include alerted()
+NOTES:
+	- creates a smooth, pulsing circle next to any element that the mixin is applied to.
+*********************/
