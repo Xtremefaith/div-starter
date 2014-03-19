@@ -289,7 +289,7 @@ class ssrch_class {
 						}
 						$newtitle .= ">(" . number_format(($post->ssrch_relevance_percent*100),0) ."% ".$this->options['relevance-text'].")</span>";
 					}
-					if ($this->options['highlight']) {
+					if ($this->options['highlight'] && !empty($srch_array)) {
 						$srch = get_search_query(false);
 			            $srch_array = $this->ssrch_splitSearch($srch);
 						$newtitle = $this->highlight($newtitle,implode(' ',$srch_array));
