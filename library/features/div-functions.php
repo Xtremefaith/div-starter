@@ -16,17 +16,20 @@ Description: Available functions used through Div Truth development
  * @return string
  */
 function div_truncate($string,$max=20,$ending="..."){
-    $tok=strtok($string,' ');
-    $string='';
-    while($tok!==false && strlen($string)<$max)
-    {
-        if (strlen($string)+strlen($tok)<=$max)
-            $string.=$tok.' ';
-        else
-            break;
-        $tok=strtok(' ');
+    if(strlen($string)>=$max){
+        $tok=strtok($string,' ');
+        $string='';
+        while($tok!==false && strlen($string)<$max)
+        {
+            if (strlen($string)+strlen($tok)<=$max)
+                $string.=$tok.' ';
+            else
+                break;
+            $tok=strtok(' ');
+        }
+        return trim($string).$ending;
     }
-    return trim($string).$ending;
+    return trim($string);
 }
 
 /**
