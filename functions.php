@@ -44,6 +44,7 @@ require_once(DIV_FEATURES_DIR.'/theme-support.php');                            
 require_once(DIV_FEATURES_DIR.'/sidebars.php');                                         #FEATURE: Sidebars
 require_once(DIV_FEATURES_DIR.'/widgets.php');                                          #FEATURE: Widgets
 require_once(DIV_FEATURES_DIR.'/shortcodes.php');                                       #FEATURE: Shortcodes
+require_once(DIV_FEATURES_DIR.'/dropbox_uploader/dbuploader.php');                      #FEATURE: Dropbox Uploader
 
 /*****************************
  * ACF Plugin Activation
