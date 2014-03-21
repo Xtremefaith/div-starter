@@ -102,11 +102,11 @@ NOTES:
 CSS3 BOX SHADOW
 @include box-shadow(0, 0, 10px, 0, #444444, "");
 *********************/
-@mixin box-shadow($top, $left, $blur, $spread, $color, $inset:"") {
-      -webkit-box-shadow:$top $left $blur $spread #{$inset};
-      -moz-box-shadow:$top $left $blur $spread #{$inset};
-      box-shadow:$top $left $blur $spread #{$inset};
-      -o-box-shadow:$top $left $blur $spread #{$inset};
+@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+      -webkit-box-shadow:$top $left $blur $color #{$inset};
+      -moz-box-shadow:$top $left $blur $color #{$inset};
+      box-shadow:$top $left $blur $color #{$inset};
+      -o-box-shadow:$top $left $blur $color #{$inset};
 }
 
 /*********************
