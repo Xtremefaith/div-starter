@@ -488,6 +488,60 @@ if(function_exists("register_field_group")){
         ));
 }
 
+/********************************
+ * Dropbox Authentication
+ ********************************/
+if(function_exists("register_field_group")){
+        register_field_group(array (
+                'id' => 'acf_dropbox-credentials',
+                'title' => 'Dropbox Credentials',
+                'fields' => array (
+                        array (
+                                'key' => 'field_s981gw3854f',
+                                'label' => 'Dropbox Email',
+                                'name' => 'dropbox_email',
+                                'type' => 'text',
+                                'instructions' => 'Enter the admin dropbox email',
+                                'default_value' => '',
+                                'placeholder' => 'admin@domain.com',
+                                'prepend' => '',
+                                'append' => '',
+                                'formatting' => 'none',
+                        ),
+                        array (
+                                'key' => 'field_g8a168w31b8j',
+                                'label' => 'Dropbox Password',
+                                'name' => 'dropbox_password',
+                                'type' => 'password',
+                                'instructions' => 'Enter dropbox account password',
+                                'default_value' => '',
+                                'placeholder' => '',
+                                'prepend' => '',
+                                'append' => '',
+                                'formatting' => 'none',
+                        ),
+                ),
+                'location' => array (
+                        array (
+                                array (
+                                        'param' => 'options_page',
+                                        'operator' => '==',
+                                        'value' => 'acf-options-developer-tools',
+                                        'order_no' => 0,
+                                        'group_no' => 0,
+                                ),
+                        ),
+                ),
+                'options' => array (
+                        'position' => 'normal',
+                        'layout' => 'default',
+                        'hide_on_screen' => array (
+                        ),
+                ),
+                'menu_order' => 2,
+        ));
+}
+
 /**************************
  * Google Analytics ID
  **************************/

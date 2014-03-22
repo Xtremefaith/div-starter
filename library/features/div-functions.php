@@ -173,4 +173,31 @@ function div_dir_array($dir){
     }
     return $dirs;
 }
+
+/**
+ * CLEAN CONTENT AUTO P TAGS
+ * Convert WP auto <p>s to <div>s
+ *
+ * @author: Nick Worth
+ * @since 1.0
+ * @param <STRING> $content
+ */
+function clean_string($content){
+   $content = str_replace("<p>", "<div>", $content);
+   return str_replace("</p>", "</div>", $content);
+}
+
+/**
+ * STRIP CONTENT AUTO P TAGS
+ * Prevent <p> tags
+ *
+ * @author: Nick Worth
+ * @since 1.0
+ * @param <STRING> $content
+ */
+function remove_paragraghs($content){
+   $content = str_replace("<p>", "", $content);
+   return str_replace("</p>", "", $content);
+}
+
 ?>
