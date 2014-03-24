@@ -55,7 +55,7 @@ function div_scripts_and_styles() {
     function theme_styles(){
       wp_enqueue_style( 'div-starter-stylesheet' );
 
-      if(preg_match('/(?i)msie [1-8]/',$_SERVER['HTTP_USER_AGENT'])){
+      if ( preg_match("/(?i)msie [1-8]\.0/",$_SERVER['HTTP_USER_AGENT'])){
         // if IE<=8
         wp_enqueue_style( 'div-ie-only' );
       } else {
