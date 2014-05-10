@@ -200,4 +200,23 @@ function remove_paragraghs($content){
    return str_replace("</p>", "", $content);
 }
 
+/**
+ * FORMAT CURRENCY
+ * Presets for formatting money, since money_format() doesn't work on windows servers
+ *
+ * @author: Nick Worth
+ * @since 1.0
+ * @param <STRING> $value
+ * @param <STRING> $format ['dollar',etc]
+ * @return <STRING>
+ */
+function format_currency($value,$format="dollar") {
+    switch ($format) {
+      case 'dollar':
+        return '$' . number_format($value, 2);
+        break;
+      #TODO: Add other cases
+    }
+}
+
 ?>
