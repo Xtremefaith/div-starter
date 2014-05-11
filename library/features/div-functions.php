@@ -219,4 +219,23 @@ function format_currency($value,$format="dollar") {
     }
 }
 
+/**
+ * GET FEATURED POST THUMBNAIL URL
+ * Simple function for getting the post thumbnail url only
+ *
+ * @author: Nick Worth
+ * @since 1.0
+ * @param <NUMBER> $post_id
+ * @param <STRING> $size ['thumbnail','medium','large','full']
+ * @return <ARRAY>
+ */
+function get_post_thumbnail_src( $post_id, $size="full" ) {
+    if(has_post_thumbnail($post_id)) :
+      $thumbnail_id = get_post_thumbnail_id($post_id);
+      return $thumbnail_url = wp_get_attachment_image_src( $thumbnail_id, $size );
+    else : 
+      return false;
+    endif;
+}
+
 ?>
