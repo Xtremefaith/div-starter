@@ -150,6 +150,8 @@ class Content{
 
   /**
    * SOCIAL SHARE ICONS
+   * @example get_share_icons()
+   * @example share_icons()
    * 
    * @author Nick Worth
    * @since 1.0
@@ -157,24 +159,29 @@ class Content{
    * @param <string> image_src
    * @return <string>
    */
-  public function share_icons($id,$icons,$image_src) {
+  public function get_share_icons($id,$icons,$image_src) {
     $title    = urlencode(get_the_title($id));
     $url      = urlencode(get_permalink($id));
     $summary  = urlencode(strip_tags($this->the_excerpt_max_charlength(50,'')));
     $image    = urlencode($image_src);
+    $s = "";
     foreach ($icons as $key => $icon) {
       switch ($icon) {
         case 'facebook':
           $fbshare = "divFBShare('".$title."','".$url."','".$summary."','".$image."')";
-          echo '<a class="social_icon '.$icon.'" title="'.$icon.'" href="javascript:void(0);" onclick="'.$fbshare.'"></a>';
+          $s .= '<a class="social_icon '.$icon.'" title="'.$icon.'" href="javascript:void(0);" onclick="'.$fbshare.'">Facebook</a>';
           break;
         
         case 'twitter':
-          echo '<a class="social_icon '.$icon.'" title="'.$icon.'" href="http://twitter.com/share?text='.$title.'&url='.$url.'" onclick="newDivWindow($(this),400,300);return false;"></a>';
+          $s .= '<a class="social_icon '.$icon.'" title="'.$icon.'" href="http://twitter.com/share?text='.$title.'&url='.$url.'" onclick="newDivWindow($(this),400,300);return false;">Twitter</a>';
+          break;
+
+        case 'pinterest':
+          $s .= '<a class="social_icon '.$icon.'" title="'.$icon.'" href="http://pinterest.com/share?text='.$title.'&url='.$url.'" onclick="newDivWindow($(this),400,300);return false;">Pinterest</a>';
           break;
 
         case 'email':
-          echo '<a class="social_icon '.$icon.'" title="'.$icon.'" href="mailto:?subject=Check this out!&amp;body=Check out this site '.$url.'." title="Share by Email" onclick="newDivWindow($(this),600,500);return false;"></a>';          
+          $s .= '<a class="social_icon '.$icon.'" title="'.$icon.'" href="mailto:?subject=Check this out!&amp;body=Check out this site '.$url.'." title="Share by Email" onclick="newDivWindow($(this),600,500);return false;">Email</a>';
         // echo '<a class="social_icon '.$icon.'" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.website.com." title="Share by Email">Test Email</a>';
           break;
 
@@ -183,6 +190,10 @@ class Content{
           break;
       }
     }
+    return $s;
+  }
+  public function share_icons($id,$icons,$image_src) {
+    echo get_share_icons($id,$icons,$image_src);
   }
 
 }
