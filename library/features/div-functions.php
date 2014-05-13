@@ -238,4 +238,49 @@ function get_post_thumbnail_src( $post_id, $size="full" ) {
     endif;
 }
 
+/**
+ * GET MEDIA ITEM ARRAY
+ * Based on ACF's image field array
+ *
+ * @author: Nick Worth
+ * @since 1.0
+ * @param <NUMBER> $post_id
+ * @return <ARRAY>
+ */
+function div_get_media_item( $post_id ) {
+    $attachment = get_post( $post_id );
+    
+    // create array to hold value data
+    $src = wp_get_attachment_image_src( $attachment->ID, 'full' );
+
+    $value = array(
+        'id' => $attachment->ID,
+        'alt' => get_post_meta($attachment->ID, '_wp_attachment_image_alt', true),
+        'title' => $attachment->post_title,
+        'caption' => $attachment->post_excerpt,
+        'description' => $attachment->post_content,
+        'mime_type' => $attachment->post_mime_type,
+        'url' => $src[0],
+        'width' => $src[1],
+        'height' => $src[2],
+        'sizes' => array(),
+    );
+
+    # find all image sizes
+    $image_sizes = get_intermediate_image_sizes();
+
+    if( $image_sizes ){
+        foreach( $image_sizes as $image_size ){
+          // find src
+          $src = wp_get_attachment_image_src( $attachment->ID, $image_size );
+          
+          // add src
+          $value[ 'sizes' ][ $image_size ] = $src[0];
+          $value[ 'sizes' ][ $image_size . '-width' ] = $src[1];
+          $value[ 'sizes' ][ $image_size . '-height' ] = $src[2];
+        }
+    }
+    return $value;
+}
+
 ?>
