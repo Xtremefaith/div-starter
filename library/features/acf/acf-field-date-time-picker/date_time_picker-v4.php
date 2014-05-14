@@ -23,7 +23,7 @@ class acf_field_date_time_picker extends acf_field
 		$this->name = 'date_time_picker';
 		$this->label = __('Date and Time Picker');
 		$this->category = __("jQuery", $this->domain); // Basic, Content, Choice, etc
-		$this->domain = 'acf-date_time_picker';
+		$this->domain = 'acf-field-date-time-picker';
 		$this->defaults = array(
 			 'label'             => __( 'Choose Time', $this->domain )
 			, 'time_format'       => 'h:mm tt'
@@ -311,11 +311,10 @@ class acf_field_date_time_picker extends acf_field
 	}
 
 
-	function isValidTimeStamp($timestamp) { //from http://stackoverflow.com/a/2524761/1434155
-	    return ((string) (int) $timestamp === $timestamp)
-	        && ($timestamp <= PHP_INT_MAX)
-	        && ($timestamp >= ~PHP_INT_MAX);
+	function isValidTimeStamp($timestamp) {
+	    return ((string)(int)$timestamp === (string)$timestamp);
 	}
+	
 	/*
 	*  update_value()
 	*
@@ -332,15 +331,25 @@ class acf_field_date_time_picker extends acf_field
 	*  @return	$value - the modified value
 	*/
 
-	function update_value( $value, $post_id, $field ) {
-		$field = array_merge($this->defaults, $field);
-		if ($value != '' && $field['save_as_timestamp'] == 'true') {
-			$value = strtotime( $value );
-		}
-		return $value;
-	}
+	// function update_value( $value, $post_id, $field ) {
+	// 	$field = array_merge($this->defaults, $field);
+	// 	if ($value != '' && $field['save_as_timestamp'] == 'true') {
+	// 		$value = strtotime( $value );
+	// 	}
+	// 	return $value;
+	// }
 
+    function update_value( $value, $post_id, $field ) {
+        $field = array_merge($this->defaults, $field);
+        if ($value != '' && $field['save_as_timestamp'] == 'true') {
+            if (preg_match('/^dd?\//',$field['date_format'] )) { //if start with dd/ or d/ (not supported by strtotime())
+                $value = str_replace('/', '-', $value);
+            }
+            $value = strtotime( $value );
+        }
 
+        return $value;
+    }
 
 	/*
 	*  input_admin_enqueue_scripts()
@@ -362,7 +371,7 @@ class acf_field_date_time_picker extends acf_field
 		$js_locale = $this->get_js_locale(get_locale());
 
 		wp_enqueue_script( 'jquery-ui-timepicker', $this->settings['dir'] . 'js/jquery-ui-timepicker-addon.js', array(
-				'acf-datepicker',
+				'acf-input',
 				'jquery-ui-slider'
 		), $this->settings['version'], true );
 

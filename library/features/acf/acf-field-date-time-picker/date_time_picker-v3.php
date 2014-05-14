@@ -26,9 +26,9 @@ class acf_field_date_time_picker extends acf_Field {
 		// set name / title
 		$this->name = 'date_time_picker';
 		$this->title = __( 'Date and Time Picker' );
-		$this->domain = 'acf-date_time_picker';
+		$this->domain = 'acf-field-date-time-picker';
 		$this->defaults = array(
-			, 'label'              => __( 'Choose Time', $this->domain )
+			  'label'              => __( 'Choose Time', $this->domain )
 			, 'time_format'        => 'hh:mm'
 			, 'show_date'          => 'true'
 			, 'date_format'        => 'yy-mm-dd'
@@ -296,13 +296,11 @@ class acf_field_date_time_picker extends acf_Field {
 	function update_value($post_id, $field, $value) {
 		$field = array_merge($this->defaults, $field);
 		if ($value != '' && $field['save_as_timestamp'] == 'true') {
-			if ( $field['show_date'] == 'true') {
-				 $date = DateTime::createFromFormat(sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $value);
-			} else {
-				 $date = DateTime::createFromFormat(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $value);
-			}
-			$value =  $date->getTimestamp();
-		}
+            if (preg_match('/^dd?\//',$field['date_format'] )) { //if start with dd/ or d/ (not supported by strtotime())
+                $value = str_replace('/', '-', $value);
+            }
+            $value = strtotime( $value );
+        }
 
 		parent::update_value($post_id, $field, $value);
 	}
@@ -383,10 +381,8 @@ class acf_field_date_time_picker extends acf_Field {
 	    return strtr((string)$time_format, $chars);
 	}
 
-	function isValidTimeStamp($timestamp) { //from http://stackoverflow.com/a/2524761/1434155
-	    return ((string) (int) $timestamp === $timestamp)
-	        && ($timestamp <= PHP_INT_MAX)
-	        && ($timestamp >= ~PHP_INT_MAX);
+	function isValidTimeStamp($timestamp) {
+	    return ((string)(int)$timestamp === (string)$timestamp);
 	}
 
 	/*--------------------------------------------------------------------------------------

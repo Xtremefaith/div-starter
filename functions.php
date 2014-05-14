@@ -46,18 +46,19 @@ require_once(DIV_FEATURES_DIR.'/widgets.php');                                  
 require_once(DIV_FEATURES_DIR.'/shortcodes.php');                                       #FEATURE: Shortcodes
 require_once(DIV_FEATURES_DIR.'/dropbox_uploader/dbuploader.php');                      #FEATURE: Dropbox Uploader
 
-/*****************************
- * ACF Plugin Activation
- *****************************/
+/*********************************
+ * ACF Plugin & Add-on Activation
+ *********************************/
+include_once(DIV_FEATURES_DIR.'/acf/acf-field-date-time-picker/acf-date_time_picker.php');  #FIELD: Date & Time picker
+include_once(DIV_FEATURES_DIR.'/acf/acf-location-field-master/acf-location.php');           #FIELD: Location Field
+include_once(DIV_FEATURES_DIR.'/acf/Gravity-Forms-ACF-Field-master/acf-gravity_forms.php'); #FIELD: Gravity Form Field
+include_once(DIV_FEATURES_DIR.'/acf/acf-cf7-field-master/acf-cf7.php');                     #FIELD: Contact Form 7 Field
+
 add_action('acf/register_fields', 'div_register_fields');
 add_filter('acf_settings', 'div_acf_settings');
 function div_register_fields(){  #4.0+ Add ons
-    include_once(DIV_FEATURES_DIR.'/acf/acf-repeater/repeater.php');                                  /*Repeater*/
-    include_once(DIV_FEATURES_DIR.'/acf/acf-gallery/gallery.php');                                    /*Gallery*/
-    include_once(DIV_FEATURES_DIR.'/acf/acf-location-field-master/acf-location.php');                 /*Location Field*/
-    include_once(DIV_FEATURES_DIR.'/acf/acf-field-date-time-picker/acf-date_time_picker.php');        /*Time Picker Field*/
-    include_once(DIV_FEATURES_DIR.'/acf/Gravity-Forms-ACF-Field-master/acf-gravity_forms.php');       /*Gravity Form Field*/
-    include_once(DIV_FEATURES_DIR.'/acf/acf-cf7-field-master/acf-cf7.php');                           /*Contact Form 7 Field*/
+    include_once(DIV_FEATURES_DIR.'/acf/acf-repeater/repeater.php');                                  #FIELD: Repeater
+    include_once(DIV_FEATURES_DIR.'/acf/acf-gallery/gallery.php');                                    #FIELD: Gallery
 }
 function div_acf_settings( $options ){
     // activate add-ons
