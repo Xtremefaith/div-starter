@@ -248,6 +248,8 @@ function get_post_thumbnail_src( $post_id, $size="full" ) {
  * @return <ARRAY>
  */
 function div_get_media_item( $post_id ) {
+    if(!$post_id) return false;
+    
     $attachment = get_post( $post_id );
     
     // create array to hold value data
