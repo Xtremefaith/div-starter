@@ -9,7 +9,7 @@ Description: Available functions used through Div Truth development
  * Used to cutoff a string to a set length if it exceeds the specified length
  * 
  * @author Nick Worth
- * @since 1.0
+ * @since 3.8.1
  * @param string $str Any string that might need to be shortened
  * @param string $length Any whole integer
  * @param string $ending to be added at the end
@@ -35,8 +35,8 @@ function div_truncate($string,$max=20,$ending="..."){
 /**
  * GET CONTENTS OF DIRECTORY
  * 
- * @author: Nick Worth
- * @since: 1.0
+ * @author Nick Worth
+ * @since: 3.8.1
  * @param <STRING> $filename
  */
 function get_text($filename) {
@@ -55,8 +55,8 @@ function get_text($filename) {
 /**
  * GET LIST FROM DIRECTORY
  *
- * @author: Nick Worth
- * @since: 1.0
+ * @author Nick Worth
+ * @since: 3.8.1
  * @param <STRING> $directory
  */
 function getDirectoryList ($directory){
@@ -85,7 +85,7 @@ function getDirectoryList ($directory){
  * DIV PAGINATION
  *
  * @author Nick Worth
- * @since 1.0
+ * @since 3.8.1
  * @param <STRING> $pages
  * @param <NUMBER> $range
  */
@@ -132,8 +132,8 @@ function div_pagination($pages = '', $range = 2, $icons = array() ){
 /**
  * LIST FOLDERS FILES
  *
- * @author: Nick Worth
- * @since 1.0
+ * @author Nick Worth
+ * @since 3.8.1
  * @param <STRING> $dir
  * @link http://stackoverflow.com/a/15876851/1058371
  */
@@ -158,8 +158,8 @@ function list_folder_files($dir){
 /**
  * LIST FOLDERS FILES
  *
- * @author: Nick Worth
- * @since 1.0
+ * @author Nick Worth
+ * @since 3.8.1
  * @param <STRING> $dir
  * @link http://stackoverflow.com/a/15876851/1058371
  */
@@ -178,8 +178,8 @@ function div_dir_array($dir){
  * CLEAN CONTENT AUTO P TAGS
  * Convert WP auto <p>s to <div>s
  *
- * @author: Nick Worth
- * @since 1.0
+ * @author Nick Worth
+ * @since 3.8.1
  * @param <STRING> $content
  */
 function clean_string($content){
@@ -191,8 +191,8 @@ function clean_string($content){
  * STRIP CONTENT AUTO P TAGS
  * Prevent <p> tags
  *
- * @author: Nick Worth
- * @since 1.0
+ * @author Nick Worth
+ * @since 3.8.1
  * @param <STRING> $content
  */
 function remove_paragraghs($content){
@@ -204,8 +204,8 @@ function remove_paragraghs($content){
  * FORMAT CURRENCY
  * Presets for formatting money, since money_format() doesn't work on windows servers
  *
- * @author: Nick Worth
- * @since 1.0
+ * @author Nick Worth
+ * @since 3.8.1
  * @param <STRING> $value
  * @param <STRING> $format ['dollar',etc]
  * @return <STRING>
@@ -223,8 +223,8 @@ function format_currency($value,$format="dollar") {
  * GET FEATURED POST THUMBNAIL URL
  * Simple function for getting the post thumbnail url only
  *
- * @author: Nick Worth
- * @since 1.0
+ * @author Nick Worth
+ * @since 3.8.1
  * @param <NUMBER> $post_id
  * @param <STRING> $size ['thumbnail','medium','large','full']
  * @return <ARRAY>
@@ -239,11 +239,30 @@ function get_post_thumbnail_src( $post_id, $size="full" ) {
 }
 
 /**
+ * GET PAGE ID BY SLUG
+ * Get a WordPress Page ID with the Slug
+ *
+ * @author Eric Teichmann
+ * @link http://erikt.tumblr.com/post/278953342/get-a-wordpress-page-id-with-the-slug
+ * @since 3.8.1
+ * @param <STRING> $page_slug
+ * @return <NUMBER>
+ */
+function get_id_by_slug($page_slug) {
+    $page = get_page_by_path($page_slug);
+    if ($page) {
+        return $page->ID;
+    } else {
+        return null;
+    }
+}
+
+/**
  * GET MEDIA ITEM ARRAY
  * Based on ACF's image field array
  *
- * @author: Nick Worth
- * @since 1.0
+ * @author Nick Worth
+ * @since 3.8.1
  * @param <NUMBER> $post_id
  * @return <ARRAY>
  */
