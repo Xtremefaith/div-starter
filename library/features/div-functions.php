@@ -210,10 +210,10 @@ function remove_paragraghs($content){
  * @param <STRING> $format ['dollar',etc]
  * @return <STRING>
  */
-function format_currency($value,$format="dollar") {
+function format_currency($value,$format="dollar",$decimals=2) {
     switch ($format) {
       case 'dollar':
-        return '$' . number_format($value, 2);
+        return '$' . number_format($value, $decimals);
         break;
       #TODO: Add other cases
     }
