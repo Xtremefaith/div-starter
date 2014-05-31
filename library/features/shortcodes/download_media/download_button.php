@@ -26,11 +26,20 @@ if(!class_exists('Download_Button_Shortcode')) {
 		function construct_button() {
 			if(!is_admin()) {
 
-				add_action('wp_footer', array(
-					$this,
-					'js_submit_form'
-				));
-
+				add_action('wp_enqueue_scripts', 'enque_div_download_scripts');
+				function enque_div_download_scripts(){
+					$div_download = wp_create_nonce( "div_download" );
+					wp_enqueue_script('div_download',DIV_FEATURES_URL.'/shortcodes/download_media/download.js', array('jquery'),'1.0', TRUE);
+				    wp_localize_script( 
+				      'div_download', 
+				      'param', 
+				      array(
+				        'ajaxurl' => admin_url( 'admin-ajax.php' ), //don't change this
+				        'nonce' => $div_download,
+				      )
+				    );	
+				}
+			    
 				/**
 				 * Shortcode zu Wordpress hinzufügen
 				 */
@@ -50,18 +59,6 @@ if(!class_exists('Download_Button_Shortcode')) {
 				} // END if(ini_get('allow_url_fopen') || function_exists('curl_init'))
 			} // END if(is_admin())
 		} // END function construct_button()
-
-		/**
-		 * JS script to set link to submit form
-		 */
-		function js_submit_form(){
-			_e('<script>
-			   		$(".download").click(function() {
-						$(this).parents("form:first").submit();
-						return false;
-					});
-				</script>');
-		}
 
 		/**
 		 * Shortcode in HTML-Code umwandeln
