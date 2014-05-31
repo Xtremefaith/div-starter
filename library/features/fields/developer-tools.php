@@ -640,16 +640,6 @@ if(function_exists("register_field_group")){
         'title' => 'Include Scripts',
         'fields' => array (
             array (
-                'key' => 'field_hj91re2hu948w',
-                'label' => 'JQuery Google CDN',
-                'name' => 'jquery_google_cdn',
-                'type' => 'true_false',
-                'instructions' => 'Attempt to load jQuery from Google CDN <em>(version 10.1)</em>',
-                'required' => 0,
-                'message' => '',
-                'default_value' => 0,
-            ),
-            array (
                 'key' => 'field_g1a89g1w3g84s',
                 'label' => 'Include BXSlider',
                 'name' => 'include_bxslider',

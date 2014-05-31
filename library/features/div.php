@@ -32,7 +32,7 @@ function initialize_div() {
 function div_scripts_and_styles() {
   if (!is_admin()) {
     // modernizr (without media query polyfill)
-    wp_register_script( 'div-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
+    wp_register_script( 'div-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array('jquery'), '2.5.3', true );
 
     // register main stylesheet
     wp_register_style( 'div-starter-stylesheet', get_template_directory_uri() . '/library/css/style.css', array(), '', 'all', true );
@@ -47,7 +47,10 @@ function div_scripts_and_styles() {
     }
 
     //adding scripts file in the footer
-    wp_register_script( 'div-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
+    if ( file_exists(get_stylesheet_directory() . '/library/js/scripts.min.js') )
+      wp_register_script( 'div-js', get_stylesheet_directory_uri() . '/library/js/scripts.min.js', array( 'jquery' ), '', true );
+    else
+      wp_register_script( 'div-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
 
     // enqueue styles and scripts
     wp_enqueue_script( 'div-modernizr' );
@@ -65,9 +68,13 @@ function div_scripts_and_styles() {
     add_action( 'wp_footer', 'theme_styles');
 
     if( !is_admin()){
-      wp_deregister_script('jquery');
-      wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"), false, '1.10.2', false);
-      wp_enqueue_script('jquery');
+      $url = 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'; // the URL to check against
+      $test_url = @fopen($url,'r'); // test parameters
+      if($test_url !== false) { // test if the URL exists
+        wp_deregister_script( 'jquery' ); // deregisters the default WordPress jQuery
+        wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, '1.10.2', true); // register the external file
+        wp_enqueue_script('jquery'); // enqueue the external file
+      } 
     }
     wp_enqueue_script( 'div-js' );
   }

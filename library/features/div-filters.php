@@ -113,10 +113,10 @@ function div_after_init_filters(){
   function include_bxslider(){
     if( !is_admin()) { // Don't do this for admin area
       $in_footer = (get_field('load_bxslider','option') == "Header") ? false : true;
-      $url = 'https://raw.githubusercontent.com/stevenwanderski/bxslider-4/master/jquery.bxslider.min.js'; // the URL to check against
+      $url = 'http://cdn.jsdelivr.net/bxslider/4.1.1/jquery.bxslider.min.js'; // the URL to check against
       $test_url = @fopen($url,'r'); // test parameters
       if($test_url !== false) { // test if the URL exists
-        wp_enqueue_script('bxslider-js', 'https://raw.githubusercontent.com/stevenwanderski/bxslider-4/master/jquery.bxslider.min.js', array('jquery'), false, $in_footer); // register the external file
+        wp_enqueue_script('bxslider-js', 'http://cdn.jsdelivr.net/bxslider/4.1.1/jquery.bxslider.min.js', array('jquery'), false, $in_footer); // register the external file
       } else {
         wp_enqueue_script( 'bxslider-js', DIV_LIBRARY_URL.'/js/libs/jquery.bxslider.min.js', array('jquery'), false, $in_footer);              
       }
@@ -134,27 +134,6 @@ function div_after_init_filters(){
       } else { ?>
         <!--[if lt IE 9]><script src="<?php echo DIV_LIBRARY_URL.'/js/libs/html5shiv.js'; ?>"></script> <![endif]-->
         <?php 
-      }
-    }
-  }
-
-  /**
-   * Load jQuery from Google CDN, fallback to local
-   *
-   * @link http://wp.tutsplus.com/tutorials/load-jquery-from-google-cdn-with-local-fallback-for-wordpress/
-   */
-  if(get_field('jquery_google_cdn','option')){ add_filter('wp_enqueue_scripts','load_google_jquery'); }
-  function load_google_jquery(){
-    if( !is_admin()){ // Don't do this for admin area, since Google's jQuery isn't in noConflict mode and will interfere with WP's admin area.
-      $url = 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'; // the URL to check against
-      $test_url = @fopen($url,'r'); // test parameters
-      if($test_url !== false) { // test if the URL exists
-        function load_external_jQuery() { // load external file
-          wp_deregister_script( 'jquery' ); // deregisters the default WordPress jQuery
-          wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'); // register the external file
-          wp_enqueue_script('jquery'); // enqueue the external file
-        }
-        add_action('wp_enqueue_scripts', 'load_external_jQuery'); // initiate the function
       }
     }
   }
