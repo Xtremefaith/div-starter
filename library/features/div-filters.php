@@ -96,37 +96,67 @@ function div_after_init_filters(){
     }
   }
   function google_analytics_tracking_code(){
-    $propertyID = get_field('google_analytics_id','option'); // GA Property ID
-    $propertyName = get_field('google_analytics_domain','option'); // GA Property ID ?>
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-
-      _gaq.push(['_setAccount', '<?php echo $propertyID; ?>']);
-      _gaq.push(['_setDomainName', '<?php echo $propertyName; ?>']);
-
-      _gaq.push(['_trackPageview']);
-      _gaq.push(['_trackPageLoadTime']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-    <?php 
+    echo "<script>".get_field('google_analytics_tracking_code','option')."</script>";
   }
 
   /**
    * INCLUDE SCRIPTS FOR ENQUE
+   * BxSlider v4.1.2 - Fully loaded, responsive content slider
+   * @link http://bxslider.com
+   *
+   * HTML5 Shiv v3.7.0 - HTML5 support for IE8 & below
+   * @link http://html5shim.googlecode.com/svn/trunk/html5.js
    * 
    * @since 1.0
    */
-  if(get_field('include_bxslider','option')){
-      add_filter('wp_enqueue_scripts','include_bxslider');
-  }
+  if(get_field('include_bxslider','option')){ add_filter('wp_enqueue_scripts','include_bxslider'); }
   function include_bxslider(){
-    $in_footer = (get_field('load_bxslider','option') == "Header") ? false : true;
-    wp_enqueue_script( 'bxslider-js', DIV_LIBRARY_URL.'/js/libs/jquery.bxslider.js', array('jquery'), false, $in_footer);
+    if( !is_admin()) { // Don't do this for admin area
+      $in_footer = (get_field('load_bxslider','option') == "Header") ? false : true;
+      $url = 'https://raw.githubusercontent.com/stevenwanderski/bxslider-4/master/jquery.bxslider.min.js'; // the URL to check against
+      $test_url = @fopen($url,'r'); // test parameters
+      if($test_url !== false) { // test if the URL exists
+        wp_enqueue_script('bxslider-js', 'https://raw.githubusercontent.com/stevenwanderski/bxslider-4/master/jquery.bxslider.min.js', array('jquery'), false, $in_footer); // register the external file
+      } else {
+        wp_enqueue_script( 'bxslider-js', DIV_LIBRARY_URL.'/js/libs/jquery.bxslider.min.js', array('jquery'), false, $in_footer);              
+      }
+    }
+  }
+
+  if(get_field('include_html5_shiv','option')){ add_filter('wp_head','include_html5_shiv'); }
+  function include_html5_shiv(){
+    if( !is_admin()) { // Don't do this for admin area
+      $url = 'http://html5shim.googlecode.com/svn/trunk/html5.js'; // the URL to check against
+      $test_url = @fopen($url,'r'); // test parameters
+      if($test_url !== false) { // test if the URL exists ?>
+        <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+        <?php 
+      } else { ?>
+        <!--[if lt IE 9]><script src="<?php echo DIV_LIBRARY_URL.'/js/libs/html5shiv.js'; ?>"></script> <![endif]-->
+        <?php 
+      }
+    }
+  }
+
+  /**
+   * Load jQuery from Google CDN, fallback to local
+   *
+   * @link http://wp.tutsplus.com/tutorials/load-jquery-from-google-cdn-with-local-fallback-for-wordpress/
+   */
+  if(get_field('jquery_google_cdn','option')){ add_filter('wp_enqueue_scripts','load_google_jquery'); }
+  function load_google_jquery(){
+    if( !is_admin()){ // Don't do this for admin area, since Google's jQuery isn't in noConflict mode and will interfere with WP's admin area.
+      $url = 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'; // the URL to check against
+      $test_url = @fopen($url,'r'); // test parameters
+      if($test_url !== false) { // test if the URL exists
+        function load_external_jQuery() { // load external file
+          wp_deregister_script( 'jquery' ); // deregisters the default WordPress jQuery
+          wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'); // register the external file
+          wp_enqueue_script('jquery'); // enqueue the external file
+        }
+        add_action('wp_enqueue_scripts', 'load_external_jQuery'); // initiate the function
+      }
+    }
   }
 
 } /* END INIT FILTERS */
