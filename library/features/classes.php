@@ -12,6 +12,7 @@ include(DIV_CLASSES_DIR.'/Custom.php');
 include(DIV_CLASSES_DIR.'/Content.php');
 include(DIV_CLASSES_DIR.'/Taxonomy.php');
 include(DIV_CLASSES_DIR.'/CPT.php');
+include(DIV_CLASSES_DIR.'/Hooks.php');
 include(DIV_CLASSES_DIR.'/TwitterAPIExchange.php');
 include(DIV_CLASSES_DIR.'/SearchRelevance.php');
 
