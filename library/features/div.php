@@ -72,7 +72,7 @@ function div_scripts_and_styles() {
       $test_url = @fopen($url,'r'); // test parameters
       if($test_url !== false) { // test if the URL exists
         wp_deregister_script( 'jquery' ); // deregisters the default WordPress jQuery
-        wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, '1.10.2', true); // register the external file
+        wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, '1.10.2', false); // register the external file
         wp_enqueue_script('jquery'); // enqueue the external file
       } 
     }
